@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     setTop () {
-      this.top = document.body.scrollTop
+      this.top = document.documentElement.scrollTop
     }
   },
   components: {
@@ -45,7 +45,6 @@ export default {
   .fade-leave-active {
     transition: all .2s ease;
   }
-
   .fade-enter,
   .fade-leave-active {
     opacity: 0;
@@ -74,6 +73,4 @@ export default {
     list-style-type: none;
     list-style: none;
   }
-  .goods-item .el-tabs__header{}
-
 </style>

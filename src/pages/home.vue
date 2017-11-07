@@ -1,7 +1,7 @@
 <template>
 <div>
 <div v-title style="display:none;">福盛全官网 - 首页</div>
-	<el-carousel height="400px" :interval="5000" @change="handleChange" >
+	<el-carousel height="450px" :interval="5000" @change="handleChange" >
     <el-carousel-item v-for="(item, index) in carouselList" :key="index">
     <img :src="item.img" class="carousel-img" alt="">
     <a :href="item.link">
@@ -95,8 +95,8 @@ export default {
 </script>
 <style type="text/css" rel="stylesheet/css" scoped>
   .el-carousel__container{
-        position: relative;
-    }
+      position: relative;
+  }
 	.carousel-img{
 		position: absolute;
 		width: 100%;
@@ -117,17 +117,17 @@ export default {
 		margin-top:30px;
 		margin-bottom: 20px;
 		transition: all .5s ease .8s;
-        -moz-transition: all .5s ease .8s; /* Firefox 4 */
-        -webkit-transition: all .5s ease .8s; /* Safari 和 Chrome */
-        -o-transition: all .5s ease .8s; /* Opera */
+    -moz-transition: all .5s ease .8s; /* Firefox 4 */
+    -webkit-transition: all .5s ease .8s; /* Safari 和 Chrome */
+    -o-transition: all .5s ease .8s; /* Opera */
 	}
 	.carousel-title{
 		opacity: 0;
 		margin-top:40px;
 		transition: all 1s ease 1.4s;
-        -moz-transition: all 1s ease 1.4s; /* Firefox 4 */
-        -webkit-transition: all 1s ease 1.4s; /* Safari 和 Chrome */
-        -o-transition: all 1s ease 1.4s; /* Opera */	
+    -moz-transition: all 1s ease 1.4s; /* Firefox 4 */
+    -webkit-transition: all 1s ease 1.4s; /* Safari 和 Chrome */
+    -o-transition: all 1s ease 1.4s; /* Opera */	
 	}
 	.txt-box.active h1,.txt-box.active h2{
 		opacity: 1;
@@ -146,5 +146,4 @@ export default {
   .link-box{
     margin-top: 50px;
   }
-  
 </style>

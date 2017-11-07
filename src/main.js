@@ -19,12 +19,11 @@ import api from './api'
 Vue.use(api)
 // 导入状态管理
 import store from './store/index'
-// 引入VueScrollTo
-import VueScrollTo from 'vue-scrollto'
-Vue.use(VueScrollTo)
 // 引入图片预览插件
 import VuePreview from 'vue-preview'
 Vue.use(VuePreview)
+import VueScrollTo from 'vue-scrollto'
+Vue.use(VueScrollTo)
 // 引入进度条
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'

@@ -289,12 +289,19 @@ export default {
 }
 </script>
 <style type="text/css">
+.main-nav{
+  background-color: rgb(238, 246, 243);
+}
+.main-nav ul {
+  max-width: 1200px;
+  margin:0 auto;
+}
 .main-nav .el-badge__content{
   display: inline-block!important;
 }
 .main-nav .logo{
     padding: 5px 20px;
-    width: 240px;
+    width: 220px;
 }
 .main-nav .menu-item, .el-menu-item{
   float: left;
