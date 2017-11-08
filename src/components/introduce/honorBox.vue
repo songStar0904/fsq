@@ -2,7 +2,9 @@
   <div class="honor">
   <title-panel :title="title"></title-panel>
   	<el-row :gutter="10" class="honor-box">
-  <el-col :xs="12" :sm="12" :md="8" :lg="8" class="honor-item" v-for="item in honor" :key="item.title"><img :src="item.img" alt=""><p>{{item.title}}</p></el-col>
+  <el-col :xs="24" :sm="12" class="honor-item" v-for="item in honor" :key="item.title">
+    <i class="fa-tag fa text-success"></i><span>{{item.title}}</span>
+  </el-col>
 </el-row>
   </div>
 </template>
@@ -12,15 +14,21 @@ export default{
   data () {
     return {
       title: '公司荣誉',
+      img: 'http://119.29.74.66/tm/Public/MallPic/honor/honor2.jpg',
       honor: [{
-        title: '劳保专业委员会',
-        img: 'http://119.29.74.66/tm/Public/MallPic/honor/honor1.jpg'
+        title: '国家高新技术企业、深圳市高新技术企业'
       }, {
-        title: '劳保专业委员会',
-        img: 'http://119.29.74.66/tm/Public/MallPic/honor/honor2.jpg'
+        title: '深圳市“双软”认定企业、“创新型”中小微企业'
       }, {
-        title: '劳保专业委员会',
-        img: 'http://119.29.74.66/tm/Public/MallPic/honor/honor3.jpg'
+        title: '深圳市智能交通行业协会会员单位'
+      }, {
+        title: '国家高新技术企业、深圳市高新技术企业'
+      }, {
+        title: '国家高新技术企业、深圳市高新技术企业'
+      }, {
+        title: '2016年9月，完成pre-A轮5000万融资'
+      }, {
+        title: '国家高新技术企业、深圳市高新技术企业'
       }]
     }
   },
@@ -37,10 +45,11 @@ export default{
 	.honor .honor-item{
 		display: inline-block;
 	  float: left;
-    font-size: 20px;
-	  text-align: center;
+    text-align: left;
+    font-size: 14px; 
+    color: rgba(72, 106, 92, 0.8);
 	}
-  .honor .honor-item img{
-    height: 150px;
+  .honor .honor-item i{
+    margin-right: 15px;
   }
 </style>

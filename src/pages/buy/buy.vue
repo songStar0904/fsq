@@ -1,6 +1,6 @@
 <template>
 	<div class="buy">
-  <div v-title>福盛全官网 - 购买流程</div>
+  <div v-title>湘潭福盛全官网 - 购买流程</div>
 <el-steps :space="200" :active="active" finish-status="success">
   <el-step title="加入购物车"></el-step>
   <el-step title="购物车结算"></el-step>

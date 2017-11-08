@@ -1,6 +1,8 @@
 import sliderHeader from './sliderHeader'
 import mapBox from './mapBox'
 import titlePanel from './titlePanel'
+import tipBox from './tipBox'
+import title2Panel from './title2Panel'
 import newsItem from './newsItem'
 import replyBox from './replyBox'
 import vEditor from './editor/editor'
@@ -13,6 +15,8 @@ export {
   sliderHeader,
   mapBox,
   titlePanel,
+  title2Panel,
+  tipBox,
   newsItem,
   replyBox,
   vEditor,

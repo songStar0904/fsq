@@ -1,6 +1,6 @@
 <template>
 <div class="news-box">
-<div v-title>福盛全官网 - 新闻中心</div>
+<div v-title>湘潭福盛全官网 - 新闻中心</div>
 <div class="top-img">
   <img src="../../assets/top1.jpg" alt="">
 </div>

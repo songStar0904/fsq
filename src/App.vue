@@ -49,18 +49,14 @@ export default {
   .fade-leave-active {
     opacity: 0;
   }
-  * {
-  word-break: break-all;
-  word-wrap: break-word;
-  padding: 0;
-  margin: 0;
-  outline: 0;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  html, body{
+    padding: 0;
+    margin:0;
   }
   body{
     position: relative;
     min-height: 100vh;
-    font-family: "", Arial;
+    font-family: "Microsoft Yahei",Arial, Helvetica, sans-serif;
   }
  
    .panel-box{

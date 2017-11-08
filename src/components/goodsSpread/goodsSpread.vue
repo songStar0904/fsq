@@ -75,8 +75,6 @@ export default{
   .spread .head .more{
   	float: right;
   }
-  .spread .head .more .leftBtn{
-  }
   .spread .head .more .btn{
   	display: inline-block;
   	height: 22px;

@@ -1,6 +1,6 @@
 <template>
 <div class="about-us">
-<div v-title>福盛全官网 - 关于我们</div>
+<div v-title>湘潭福盛全官网 - 关于我们</div>
 <div class="top-img">
   <img src="../../assets/top3.jpg" alt="">
 </div>

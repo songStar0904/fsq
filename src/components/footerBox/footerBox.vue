@@ -51,7 +51,6 @@ export default{
 </script>
 <style type="text/css" scoped>
 footer{
-  // text-align: center;
   padding: 27px 0;
   font-size: 14px;
   background-color: rgb(230, 245, 240);

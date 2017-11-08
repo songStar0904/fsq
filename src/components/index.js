@@ -24,6 +24,7 @@ import simpleIntroduce from './introduce/simpleIntroduce'
 import honorBox from './introduce/honorBox'
 import cultureBox from './introduce/cultureBox'
 import photoBox from './introduce/photoBox'
+import bigBang from './introduce/bigBang'
 import commentBox from './commentBox/commentBox'
 import baseBox from './user/baseBox'
 import addressBox from './user/address'
@@ -51,6 +52,7 @@ export {
   honorBox,
   cultureBox,
   photoBox,
+  bigBang,
   commentBox,
   baseBox,
   addressBox,

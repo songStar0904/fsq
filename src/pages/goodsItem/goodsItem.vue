@@ -1,6 +1,6 @@
 <template>
 <div class="goods-item" v-if="goods">
-<div v-title>福盛全官网 - {{goods.name}}</div>
+<div v-title>湘潭福盛全官网 - {{goods.name}}</div>
 <div class="head-left">
 <!-- <p>{{lensLeft}}</p><p>{{wrapLeft}}</p> -->
   <div class="wrap" ref="wrap" @mouseover="showLens=true" @mouseout="showLens=false" @mousemove="doMouseMove($event)">

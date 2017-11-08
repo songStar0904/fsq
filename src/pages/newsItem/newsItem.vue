@@ -1,6 +1,6 @@
 <template>
 	<div class="news-item">
-  <div v-title>福盛全官网 - {{news.title}}</div>
+  <div v-title>湘潭福盛全官网 - {{news.title}}</div>
 	<div class="news-box">
 	<h2 class="news-name text-success">{{news.title}}</h2>
 	<div class="author"><img :src="author.img" alt=""><div class="name">{{author.nick}}</div></div>

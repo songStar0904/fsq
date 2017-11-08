@@ -1,6 +1,6 @@
 <template>
 <div>
-<div v-title style="display:none;">福盛全官网 - 首页</div>
+<div v-title style="display:none;">湘潭福盛全官网 - 首页</div>
 	<el-carousel height="450px" :interval="5000" @change="handleChange" >
     <el-carousel-item v-for="(item, index) in carouselList" :key="index">
     <img :src="item.img" class="carousel-img" alt="">

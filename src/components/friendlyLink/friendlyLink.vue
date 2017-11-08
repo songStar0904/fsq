@@ -14,23 +14,7 @@ export default{
     return {
       title: '友情链接',
       subtitle: 'lalalal',
-      linkList: [{
-        title: '百度百科',
-        img: '/static/loading.gif',
-        url: 'https://baike.baidu.com/'
-      }, {
-        title: 'vue',
-        img: '/static/loading.gif',
-        url: 'https://cn.vuejs.org/v2/'
-      }, {
-        title: 'element-ui',
-        img: '/static/loading.gif',
-        url: 'http://element.eleme.io/#/zh-CN/'
-      }, {
-        title: 'layui',
-        img: '/static/loading.gif',
-        url: 'http://www.layui.com/'
-      }]
+      linkList: []
     }
   },
   mounted () {

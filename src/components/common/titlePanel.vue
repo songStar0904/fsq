@@ -13,24 +13,6 @@ export default{
     },
     subtitle: {
       type: String
-    },
-    visible: {
-      type: Boolean,
-      default: () => false
-    }
-  },
-  watch: {
-    visible (val) {
-      if (val) {
-        console.log('im visible in the viewport!')
-      } else {
-        console.log('im no longer visible...')
-      }
-    }
-  },
-  data () {
-    return {
-      transitionIn: false
     }
   }
 }
