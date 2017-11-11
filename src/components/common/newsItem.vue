@@ -27,7 +27,7 @@ export default{
   },
   computed: {
     filterContent () {
-      return this.item.content.slice(0, 80).concat('...')
+      return this.item.content.slice(0, 70).concat('...')
     }
   }
 }

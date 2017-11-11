@@ -119,6 +119,7 @@ footer{
 .footer .footer-right .qr p{
   font-size: 12px;
   color: black;
+  margin: 0;
 }
 .footer .footer-right .qr .qr-img{
   height: 100px;

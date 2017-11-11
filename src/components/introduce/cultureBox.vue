@@ -1,6 +1,6 @@
 <template>
 <div class="culture">
-<title-panel :title="title"></title-panel>
+<title2-panel :title="title" :subtitle="subtitle"></title2-panel>
 	<el-row :gutter="10">
 	
   <el-col :xs="12" :sm="12" :md="8" :lg="8" class="culture-item text-success" v-for="item in culture" :key="item.title">
@@ -13,7 +13,7 @@
 </div>
 </template>
 <script>
-import {titlePanel} from '@/components/common'
+import {title2Panel} from '@/components/common'
 export default{
   props: {
     active: {
@@ -22,7 +22,8 @@ export default{
   },
   data () {
     return {
-      title: '企业文化',
+      subtitle: '企业文化',
+      title: 'BUSINESS CULTURE',
       culture: [{
         icon: 'fa-bullseye',
         title: '企业目标',
@@ -51,7 +52,7 @@ export default{
     }
   },
   components: {
-    titlePanel
+    title2Panel
   }
 }
 </script>

@@ -38,13 +38,18 @@
   <el-col :span="8" class="goods-ind-3"> <span>收藏：</span> <span class="goods-comment text-success">{{love}}</span></el-col>
 </el-row>
     <div class="style">
-      <span>外观：</span> <span class="goods-style">
+      <span>外&nbsp;&nbsp;&nbsp;&nbsp;观：</span> <span class="goods-style">
         <span class="style-item" v-for="(item, index) in goods.style" :class="{actived:currentStyle===index}"@click="changeStyle(index)">{{item.name}}</span>
       </span>
     </div>
     <div class="sub">
-      <span>规格：</span> <span class="goods-sub">
+      <span>批发量：</span> <span class="goods-sub">
         <span class="sub-item" v-for="(item, index) in goods.sub" :class="{actived:currentSub===index}"@click="changeSub(index)">{{item.name}}</span>
+      </span>
+    </div>
+    <div class="sub">
+      <span>规&nbsp;&nbsp;&nbsp;&nbsp;格：</span> <span class="goods-sub">
+        <span class="sub-item" v-for="(item, index) in sub" :class="{actived:currentSub2===index}"@click="currentSub2=index">{{item.name}}</span>
       </span>
     </div>
     <div class="goods-price text-orange">￥&nbsp;{{goods.sub[currentSub].price}}&nbsp;元</div>
@@ -80,6 +85,7 @@ export default{
       currentStyle: 0,
       // 当前选择的规格
       currentSub: 0,
+      currentSub2: 0,
       // 放大倍数
       scale: 2,
       current: 0,
@@ -102,7 +108,16 @@ export default{
       collected: false,
       // 收藏数
       love: 0,
-      collectTitle: '收藏宝贝'
+      collectTitle: '收藏宝贝',
+      sub: [{
+        name: 'L'
+      }, {
+        name: 'XL'
+      }, {
+        name: 'XXL'
+      }, {
+        name: 'XXXL'
+      }]
     }
   },
   created () {

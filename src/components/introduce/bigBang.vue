@@ -1,6 +1,6 @@
 <template>
 	<section class="bigBang">
-		<title2-panel :title="titile" :subtitle="subtitle"></title2-panel>
+		<title2-panel :title="title" :subtitle="subtitle"></title2-panel>
 		<article class="box">
 			<div class="btn left" @click="toLeft()"><i class="el-icon-arrow-left"></i></div>
 			<div class="main-line" :style="'width:'+(bigBang.length+1)*200 +'px;left:'+(-toMove)+'px'">
@@ -17,7 +17,7 @@ import {title2Panel, tipBox} from '@/components/common'
 export default{
   data () {
     return {
-      titile: 'BIG BANG',
+      title: 'BIG BANG',
       subtitle: '大事件',
       bigBang: [{
         time: 2015,
