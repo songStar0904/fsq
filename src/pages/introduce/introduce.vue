@@ -16,6 +16,9 @@
     <el-tab-pane label="公司文化" name="culture">
     <culture-box :active="activeName"></culture-box>
     </el-tab-pane>
+    <el-tab-pane label="公司团队" name="team">
+      <our-team :active="activeName"></our-team>
+    </el-tab-pane>
     <el-tab-pane label="发展历程" name="bigBang">
       <big-bang :active="activeName"></big-bang>
     </el-tab-pane>
@@ -28,7 +31,7 @@
   </div>
 </template>
 <script>
-  import {simpleIntroduce, honorBox, cultureBox, photoBox, bigBang} from '@/components'
+  import {simpleIntroduce, honorBox, cultureBox, photoBox, bigBang, ourTeam} from '@/components'
   export default {
     data () {
       return {
@@ -52,7 +55,8 @@
       honorBox,
       cultureBox,
       photoBox,
-      bigBang
+      bigBang,
+      ourTeam
     }
   }
 </script>

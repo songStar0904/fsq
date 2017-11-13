@@ -57,6 +57,7 @@ export default {
     position: relative;
     min-height: 100vh;
     font-family: "Microsoft Yahei",Arial, Helvetica, sans-serif;
+    color: rgba(72, 106, 92, 1);
   }
  
    .panel-box{

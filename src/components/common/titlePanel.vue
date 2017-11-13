@@ -19,7 +19,10 @@ export default{
 </script>
 <style type="text/css" scoped>
 .panel{
-	margin: 50px 0;
+	margin: 30px 0;
+}
+.panel h1{
+  margin-bottom: 0px;
 }
 .my-line{
   display: inline-block;

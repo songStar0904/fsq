@@ -7,7 +7,6 @@
 import mainNav from './mainNav/mainNav'
 import servicesBox from './servicesBox/servicesBox'
 import newsBox from './newsBox/newsBox'
-import titlePanel from './titlePanel/titlePanel'
 import friendlyLink from './friendlyLink/friendlyLink'
 import footerBox from './footerBox/footerBox'
 import backTop from './backTop/backTop'
@@ -25,6 +24,7 @@ import honorBox from './introduce/honorBox'
 import cultureBox from './introduce/cultureBox'
 import photoBox from './introduce/photoBox'
 import bigBang from './introduce/bigBang'
+import ourTeam from './introduce/ourTeam'
 import commentBox from './commentBox/commentBox'
 import baseBox from './user/baseBox'
 import addressBox from './user/address'
@@ -35,7 +35,6 @@ export {
   mainNav,
   servicesBox,
   newsBox,
-  titlePanel,
   friendlyLink,
   footerBox,
   backTop,
@@ -53,6 +52,7 @@ export {
   cultureBox,
   photoBox,
   bigBang,
+  ourTeam,
   commentBox,
   baseBox,
   addressBox,

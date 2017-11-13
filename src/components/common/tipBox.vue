@@ -31,10 +31,10 @@ export default{
 	color: rgba(72, 106, 92, 1);
 }
 .Ttop{
-	top: 45px;
+	top: 60px;
 }
 .Tbottom{
-	bottom: 45px;
+	bottom: 60px;
 }
 .tipBox.main{
 	background-color: #13CE66;
@@ -55,7 +55,7 @@ export default{
 	bottom: -12px;
 }
 .arrow.top{
-	top: -100px;
+	top: -104px;
 }
 .tipBox.main .arrow{
 	color: #13CE66;

@@ -100,6 +100,7 @@ export default{
   }
   .spread .wrap .goods-box{
   	display: inline-block;
+    padding: 0;
   	width: 20000px;
   	transition: margin-left 0.5s ease;
   }

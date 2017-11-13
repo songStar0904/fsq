@@ -4,6 +4,7 @@ import titlePanel from './titlePanel'
 import tipBox from './tipBox'
 import title2Panel from './title2Panel'
 import newsItem from './newsItem'
+import personItem from './personItem'
 import replyBox from './replyBox'
 import vEditor from './editor/editor'
 import bottomToolBar from './bottomToolBar'
@@ -18,6 +19,7 @@ export {
   title2Panel,
   tipBox,
   newsItem,
+  personItem,
   replyBox,
   vEditor,
   bottomToolBar,

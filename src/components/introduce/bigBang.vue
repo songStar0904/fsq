@@ -5,6 +5,7 @@
 			<div class="btn left" @click="toLeft()"><i class="el-icon-arrow-left"></i></div>
 			<div class="main-line" :style="'width:'+(bigBang.length+1)*200 +'px;left:'+(-toMove)+'px'">
 				<div class="tip" v-for="(item, index) in bigBang"  :style="'left:'+((index * 200)+100) +'px'">
+					<span class="time" v-text="item.time"></span>
 					<tip-box :title="item.value" :key="index" :type="type=index%2" :color="color = !(index%3)" ></tip-box>
 				</div>
 			</div>
@@ -20,35 +21,35 @@ export default{
       title: 'BIG BANG',
       subtitle: '大事件',
       bigBang: [{
-        time: 2015,
+        time: '2015/6',
         value: '2015干了啥干了啥干了啥'
       },
       {
-        time: 2016,
+        time: '2016/5',
         value: '2016干了啥干了啥干了啥'
       },
       {
-        time: 2017,
+        time: '2017/12',
         value: '2017干了啥干了啥干了啥'
       },
       {
-        time: 2016,
+        time: '2016/4',
         value: '2018干了啥干了啥干了啥'
       },
       {
-        time: 2017,
+        time: '2017/4',
         value: '2019干了啥干了啥干了啥'
       },
       {
-        time: 2017,
+        time: '2017/12',
         value: '2017干了啥干了啥干了啥'
       },
       {
-        time: 2016,
+        time: '2016/4',
         value: '2018干了啥干了啥干了啥'
       },
       {
-        time: 2017,
+        time: '2017/4',
         value: '2019干了啥干了啥干了啥'
       }],
       current: 0,
@@ -136,5 +137,11 @@ export default{
 	background-color: rgb(200, 223, 223);
 	cursor: pointer;
 	z-index: 10;
+}
+.box .tip .time{
+    position: absolute;
+    top: 30px;
+    left: -15px;
+    color: rgba(72, 106, 92, 0.8);
 }
 </style>

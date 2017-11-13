@@ -101,7 +101,8 @@ export default{
 	.wechat-box p{
 		position: absolute;
 		left: 50%;
-		margin-left: -56px;
+		margin: 0 -56px;
+		
 		top: 160px;
 		color: #666;
 	}

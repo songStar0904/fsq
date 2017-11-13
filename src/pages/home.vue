@@ -40,7 +40,8 @@
   </div>
   </template>
 <script>
-import {servicesBox, newsBox, friendlyLink, titlePanel, aboutHome, goodsSpread} from '@/components'
+import {servicesBox, newsBox, friendlyLink, aboutHome, goodsSpread} from '@/components'
+import {titlePanel} from '@/components/common'
 export default {
   name: 'home',
   props: {
