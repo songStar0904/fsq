@@ -29,32 +29,32 @@ export default{
       detail: '有一批拥有热情和梦想的年轻人组成，现在寻找和我们一样追求快乐和创新，用有野心改变世界的有志青年，集结梦想，创造奇迹！',
       team: [{
         name: 'songStar1',
-        img: 'https://qlogo3.store.qq.com/qzone/1043328710/1043328710/100?1497457424',
+        img: 'http://pic.qiantucdn.com/58pic/15/17/07/11R58PICWrZ_1024.jpg!/fw/780/watermark/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center',
         profession: '前端工程师',
         detail: '有一批拥有热情和梦想的年轻人组成，现在寻找和我们一样追求快乐和创新，用有野心改变世界的有志青年，集结梦想，创造奇迹'
       }, {
         name: 'songStar2',
-        img: 'https://qlogo3.store.qq.com/qzone/1043328710/1043328710/100?1497457424',
+        img: 'http://pic.qiantucdn.com/58pic/15/17/07/11R58PICWrZ_1024.jpg!/fw/780/watermark/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center',
         profession: '前端工程师',
         detail: '有一批拥有热情和梦想的年轻人组成，现在寻找和我们一样追求快乐和创新，用有野心改变世界的有志青年，集结梦想，创造奇迹'
       }, {
         name: 'songStar3',
-        img: 'https://qlogo3.store.qq.com/qzone/1043328710/1043328710/100?1497457424',
+        img: 'http://pic.qiantucdn.com/58pic/15/17/07/11R58PICWrZ_1024.jpg!/fw/780/watermark/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center',
         profession: '前端工程师',
         detail: '有一批拥有热情和梦想的年轻人组成，现在寻找和我们一样追求快乐和创新，用有野心改变世界的有志青年，集结梦想，创造奇迹'
       }, {
         name: 'songStar4',
-        img: 'https://qlogo3.store.qq.com/qzone/1043328710/1043328710/100?1497457424',
+        img: 'http://pic.qiantucdn.com/58pic/15/17/07/11R58PICWrZ_1024.jpg!/fw/780/watermark/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center',
         profession: '前端工程师',
         detail: '有一批拥有热情和梦想的年轻人组成，现在寻找和我们一样追求快乐和创新，用有野心改变世界的有志青年，集结梦想，创造奇迹'
       }, {
         name: 'songStar5',
-        img: 'https://qlogo3.store.qq.com/qzone/1043328710/1043328710/100?1497457424',
+        img: 'http://pic.qiantucdn.com/58pic/15/17/07/11R58PICWrZ_1024.jpg!/fw/780/watermark/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center',
         profession: '前端工程师',
         detail: '有一批拥有热情和梦想的年轻人组成，现在寻找和我们一样追求快乐和创新，用有野心改变世界的有志青年，集结梦想，创造奇迹'
       }, {
         name: 'songStar6',
-        img: 'https://qlogo3.store.qq.com/qzone/1043328710/1043328710/100?1497457424',
+        img: 'http://pic.qiantucdn.com/58pic/15/17/07/11R58PICWrZ_1024.jpg!/fw/780/watermark/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center',
         profession: '前端工程师',
         detail: '有一批拥有热情和梦想的年轻人组成，现在寻找和我们一样追求快乐和创新，用有野心改变世界的有志青年，集结梦想，创造奇迹'
       }],

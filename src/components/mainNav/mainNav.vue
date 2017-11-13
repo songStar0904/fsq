@@ -8,6 +8,8 @@
     <el-menu-item index="/introduce/main">公司概括</el-menu-item>
     <el-menu-item index="/introduce/honor">公司荣誉</el-menu-item>
     <el-menu-item index="/introduce/culture">公司文化</el-menu-item>
+    <el-menu-item index="/introduce/team">公司团队</el-menu-item>
+    <el-menu-item index="/introduce/bigBang">发展历程</el-menu-item>
     <el-menu-item index="/introduce/photo">公司相册</el-menu-item>
   </el-submenu>
   <el-menu-item index="/news">新闻中心</el-menu-item>

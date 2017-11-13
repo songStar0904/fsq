@@ -23,6 +23,9 @@ export default{
 .panel{
 	margin: 50px 0;
 }
+.panel h1{
+	font-size: 24px;
+}
 .title{
 	margin-bottom: 10px;
 }

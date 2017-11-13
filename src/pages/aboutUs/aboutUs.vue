@@ -19,7 +19,8 @@
 </div>
 </template>
 <script type="text/javascript">
-import {titlePanel, aboutBox, leaveMessage} from '@/components'
+import {aboutBox, leaveMessage} from '@/components'
+import {titlePanel} from '@/components/common'
 export default{
   name: 'aboutUs',
   data () {
