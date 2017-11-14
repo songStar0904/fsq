@@ -83,17 +83,16 @@ export default{
 </script>
 <style scoped>
 .bigBang{
-	max-width: 1000px;
 	text-align: center;
 }
 .box{
 	position: relative;
-	height: 400px;
-	margin-top: 70px;
+	height: 500px;
+  overflow: hidden;
 }
 .box .btn{
 	position: absolute;
-	top: 100px;
+	top: 170px;
 	width: 40px;
 	height: 40px;
 	background-color: rgb(25, 206, 102);
@@ -121,7 +120,7 @@ export default{
 }
 .box .main-line{
 	position: absolute;
-	top: 115px;
+	top: 185px;
 	width: 1000px;
 	height: 10px;
 	background-color: rgb(230, 245, 240);

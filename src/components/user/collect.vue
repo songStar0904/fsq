@@ -93,14 +93,7 @@
   export default{
     data () {
       return {
-        collect: [{
-          gid: 1,
-          name: '桑普名称',
-          img: '/static/loading.gif',
-          date: '2017-8-14',
-          price: 250,
-          type: '周边'
-        }],
+        collect: [],
         // 当前页码
         currentPage: 1,
         // 数据总条目
@@ -123,15 +116,14 @@
       // 获取数据
       get_table_data () {
         this.load_data = true
-        console.log(this.$fetch)
+        // console.log(this.$fetch)
         this.$fetch.collect.get({
           page: this.currentPage,
           length: this.length
         })
           .then((res) => {
-            console.log(res)
+            // console.log(res)
             this.collect = res.data
-            // this.currentPage = res.page
             this.total = res.total
             this.load_data = false
           })

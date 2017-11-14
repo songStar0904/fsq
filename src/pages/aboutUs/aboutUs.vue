@@ -5,15 +5,11 @@
   <img src="../../assets/top3.jpg" alt="">
 </div>
 <div class="aboutBox panel-box">
-<transition name="el-zoom-in-center">
 <title-panel :title="aboutTitle" :subtitle="aboutSubtitle"></title-panel>
-</transition>
 <about-box></about-box>
 </div>
 <div class="msgBox panel-box">
-<transition name="el-zoom-in-center">
 <title-panel :title="msgTitle" :subtitle="msgSubtitle"></title-panel>
-</transition>
 <leave-message></leave-message>
 </div>
 </div>
@@ -42,7 +38,10 @@ export default{
 	.about-us{
 		text-align: center;
 	}
-	.panel-box{
-		padding: 25px 0;
-	}
+  .aboutBox, .msgBox{
+    margin: 50px auto;
+  }
+  .msgBox{
+    max-width: 1000px;
+  }
 </style>

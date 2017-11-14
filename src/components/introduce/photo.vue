@@ -75,7 +75,7 @@ export default{
 	    width: 40px;
 	    height: 40px;
 	    top: -25px;
-        right: -25px;
+      right: -25px;
 	    cursor: pointer;
 	    font-size: 20px;
 	    background-color: #fff;

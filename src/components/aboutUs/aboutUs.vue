@@ -50,7 +50,8 @@ export default{
 		padding: 25px 0;
 	}
 	.contact{
-		margin: 25px 15%;
+		max-width: 1000px;
+	    margin: 25px auto;
 	}
 	.contact .box{
 		height: 100px;

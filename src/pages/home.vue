@@ -1,5 +1,6 @@
 <template>
-<div>
+<main>
+<!-- 首页轮播图 -->
 <div v-title style="display:none;">湘潭福盛全官网 - 首页</div>
 	<el-carousel height="450px" :interval="5000" @change="handleChange" >
     <el-carousel-item v-for="(item, index) in carouselList" :key="index">
@@ -12,43 +13,37 @@
       </a>
     </el-carousel-item>
   </el-carousel>
-   
-  <div class="services-box panel-box">
-  <services-box></services-box>
+  <!-- 服务模块 -->
+  <div class="services-box">
+    <services-box></services-box>
   </div>
-  <div class="goods-box">
+  <!-- 推荐商品 -->
+  <div class="goods-box box">
     <goods-spread :title="goodsTitle"></goods-spread>
   </div>
+  <!-- 置顶新闻 -->
   <div class="news-box">
   <el-row :gutter="0"  type="flex" justify="space-around">
     <el-col :xs="24" :sm="24" :md="18" :lg="15">
-<title-panel class="panel-box" :title="newsTitle" :subtitle="newsSubtitle"></title-panel>
-  <news-box></news-box>
-  </el-col>
+      <title-panel class="panel-box" :title="newsTitle" :subtitle="newsSubtitle"></title-panel>
+      <news-box></news-box>
+    </el-col>
   </el-row>
   </div>
+  <!-- 关于福盛全 -->
   <about-home></about-home>
+  <!-- 友情链接 -->
   <div class="link-box panel-box">
-    <transition name="custom-classes-transition"
-    enter-active-class="animated fadeInUpBig">
-<title-panel :title="linkTitle" :subtitle="linkSubtitle"></title-panel>
-</transition>
-  <transition name="el-zoom-in-center">
-  <friendly-link></friendly-link>
-  </transition>
+    <title-panel :title="linkTitle" :subtitle="linkSubtitle"></title-panel>
+    <friendly-link></friendly-link>
   </div>
-  </div>
-  </template>
+</main>
+</template>
 <script>
 import {servicesBox, newsBox, friendlyLink, aboutHome, goodsSpread} from '@/components'
 import {titlePanel} from '@/components/common'
 export default {
   name: 'home',
-  props: {
-    top: {
-      type: Number
-    }
-  },
   data () {
     return {
       msg: 'this is home',
@@ -137,14 +132,7 @@ export default {
   .services-box{
     height: 271px;
   }
-  .news-box{
-    margin: 50px auto 0;
-  }
-  .goods-box{
-    width: 1000px;
-    margin: 0 auto;
-  }
-  .link-box{
-    margin-top: 50px;
-  }
+  .panel-box{
+    text-align: center;
+   }
 </style>

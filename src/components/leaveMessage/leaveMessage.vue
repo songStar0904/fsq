@@ -91,7 +91,6 @@ export default{
 <style type="text/css" scoped>
 	.leaveMsg{
 		padding: 25px 0;
-		margin: 0 10%;
     text-align: center;
 	}
 	.map,.el-form{

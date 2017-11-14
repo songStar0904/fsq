@@ -1,5 +1,5 @@
 <template>
-<div class="user">
+<div class="user box">
 <div v-title>福盛全官网 - 个人中心</div>
 <el-tabs type="border-card" v-model="active">
   <el-tab-pane name="1">
@@ -75,9 +75,4 @@ export default{
 }
 </script>
 <style scoped>
-.user {
-	max-width: 1000px;
-  min-height: 500px;
-	margin: 50px auto;
-}
 </style>

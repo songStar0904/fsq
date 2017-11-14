@@ -60,7 +60,7 @@ export default{
     }
   },
   mounted () {
-    console.log(this.$store.state.user.userInfo)
+    // console.log(this.$store.state.user.userInfo)
   },
   methods: {
     submitForm (formName) {

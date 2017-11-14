@@ -1,27 +1,27 @@
 <template>
     <footer class="bg-success">
     <div class="footer">
-<el-row :gutter="20">
-  <el-col :xs="24" :sm="12" :md="12" :lg="12">
-    <ul class="footer-link">
-      <li v-for="item in link" v-text="item.title"></li>
-    </ul>
-    <div class="copy-right" v-text="title"></div>
-  </el-col>
-  <el-col :xs="24" :sm="12" :md="12" :lg="12" class="footer-right">
-  <a href="tencent://message/?uin=173858731&Site=&Menu=yes"><i class="fa fa-qq"></i></a>
-   <i class="fa fa-wechat" @mouseover="show=true" @mouseout="show=false">
-        <transition name="custom-classes-transition"
-    enter-active-class="animated flipInY"
-    leave-active-class="animated flipOutY">
-    <div class="qr" v-show="show">
-  <img src="../../assets/wechat.png" alt="" class="qr-img" >
-  <p>扫一扫，关注微信</p>
-  </div>
-  </transition>
-   </i>
-   <i class="fa fa-weibo"></i>
-  </el-col>
+      <el-row :gutter="20">
+        <el-col :xs="24" :sm="12" :md="12" :lg="12">
+          <ul class="footer-link">
+            <li v-for="item in link" v-text="item.title"></li>
+          </ul>
+          <div class="copy-right" v-text="title"></div>
+        </el-col>
+      <el-col :xs="24" :sm="12" :md="12" :lg="12" class="footer-right">
+        <a href="tencent://message/?uin=173858731&Site=&Menu=yes"><i class="fa fa-qq"></i></a>
+         <i class="fa fa-wechat" @mouseover="show=true" @mouseout="show=false">
+              <transition name="custom-classes-transition"
+                          enter-active-class="animated flipInY"
+                          leave-active-class="animated flipOutY">
+              <div class="qr" v-show="show">
+                <img src="../../assets/wechat.png" alt="" class="qr-img" >
+                <p>扫一扫，关注微信</p>
+              </div>
+            </transition>
+         </i>
+         <i class="fa fa-weibo"></i>
+      </el-col>
 </el-row>
 </div>
     </footer>

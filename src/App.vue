@@ -1,7 +1,7 @@
 <template>
   <div id="app">   
     <main-nav></main-nav>
-    <router-view :top="top"></router-view>
+    <router-view :style="{minHeight:(screenHeight-303)+'px'}"></router-view>
     <transition
     name="custom-classes-transition"
     enter-active-class="animated bounceInDown"
@@ -41,14 +41,6 @@ export default {
 }
 </script>
 <style lang="css" type="text/css" rel="stylesheet/css">
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: all .2s ease;
-  }
-  .fade-enter,
-  .fade-leave-active {
-    opacity: 0;
-  }
   html, body{
     padding: 0;
     margin:0;
@@ -59,12 +51,12 @@ export default {
     font-family: "Microsoft Yahei",Arial, Helvetica, sans-serif;
     color: rgba(72, 106, 92, 1);
   }
- 
-   .panel-box{
-    text-align: center;
-   }
+  .box {
+    max-width: 1000px;
+    margin: 50px auto;
+  }
    .text-orange{
-    color:#f60;
+    color: #f60;
    }
    ol, ul, li {
     list-style-type: none;
