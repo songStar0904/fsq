@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import Home from '@/pages/home'
 // import aboutUs from '@/pages/aboutUs/aboutUs'
-import news from '@/pages/news/news'
-import goods from '@/pages/goods/goods'
+// import news from '@/pages/news/news'
+// import goods from '@/pages/goods/goods'
 // import goodsItem from '@/pages/goodsItem/goodsItem'
 // import allGoods from '@/components/allGoods/allGoods'
 // import allNews from '@/components/allNews/allNews'
@@ -42,7 +42,7 @@ export default new Router({
     }, {
       path: '/news',
       name: 'news',
-      component: news,
+      component: resolve => require(['@/pages/news/news'], resolve),
       children: [{
         path: '',
         name: 'allNews',
@@ -59,7 +59,7 @@ export default new Router({
     }, {
       path: '/goods',
       name: 'goods',
-      component: goods,
+      component: resolve => require(['@/pages/goods/goods'], resolve),
       children: [{
         path: '',
         name: 'all',

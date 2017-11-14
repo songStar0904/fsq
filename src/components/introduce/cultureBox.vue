@@ -12,7 +12,7 @@
 <div class="main">
      <img src="../../assets/culture.jpg" alt="">
      <div v-for="(item, index) in culture">
-    <el-tooltip class="tip" effect="dark" :placement="active = index < 3 ? 'left' : 'right'">
+    <el-tooltip class="tip" :placement="active = index < 3 ? 'left' : 'right'">
       <div slot="content"><span class="title" style="font-size: 16px;">{{item.title}}</span><br/>{{item.content}}</div>
       <div class="item"  :class="'pos' + index">
       <i class="fa fa-3x" :class="item.icon" :key="item.title"></i>
@@ -87,6 +87,7 @@ export default{
     text-align: center;
     line-height: 60px;
     cursor: pointer;
+    transition: all ease .5s;
   }
   .culture .item:hover{
     color: #fff;

@@ -1,7 +1,7 @@
 <template>
 <div id="newsBox">
 <div id="newsWrap" @mouseenter="stop" @mouseleave="start">
-<div class="news-box" ref="newsBox" :style="{top: toMove}">
+<div class="news-box" ref="newsBox" :style="{top: toMove + 'px'}">
 	<div class="newsItem" v-for="(item, index) in newsList" ref="newsItem">
       <news-item :item="item"></news-item>
     </div>
@@ -18,44 +18,29 @@ export default {
     return {
       title: '新闻资讯',
       subtitle: '新鲜事，简单报',
-      newsList: [{
-        id: 1,
-        title: '福盛全官网正式上线',
-        content: '福盛全官网正式上线福盛全官网正式上线福盛全官网正式上线福盛全官网正式上线福盛全官网正式上线...',
-        glance: 55,
-        heart: 23,
-        time: '2017-7-5',
-        img: '/static/loading.gif'
-      }, {
-        id: 2,
-        title: '福盛全官网正式上线',
-        content: '福盛全官网正式上线福盛全官网正式上线福盛全官网正式上线福盛全官网正式上线福盛全官网正式上线...',
-        glance: 55,
-        heart: 23,
-        time: '2017-7-5',
-        img: '/static/loading.gif'
-      }],
-      toTop: null,
+      newsList: [],
+      toTop: 200,
       current: null,
       timer: null,
       time: 5000,
       toMove: 0,
-      transitionIn: true
+      length: 0
     }
   },
   mounted () {
-    this.toTop = this.$refs.newsItem[0].clientHeight
     this.getNews()
     this.play()
   },
   methods: {
     getNews () {
+      console.log('asd')
       this.$fetch.news.get({
         type: 'stick'
       })
         .then((res) => {
           if (res.status) {
             this.newsList = res.data
+            this.length = res.data.length
           } else {
             this.$message.error(res.msg)
           }
@@ -63,12 +48,12 @@ export default {
     },
     play () {
       this.timer = setInterval(() => {
-        if (this.current < this.$refs.newsItem.length - 1) {
+        if (this.current < this.length - 1) {
           this.current++
         } else {
           this.current = 0
         }
-        this.toMove = -this.toTop * this.current + 'px'
+        this.toMove = -this.toTop * this.current
       }, this.time)
     },
     stop () {
@@ -100,7 +85,7 @@ export default {
 	}
 	.newsItem{
 		height: 200px;
-		padding: 10px 10px;
+		padding: 0px 10px;
 		margin:0 auto;
 	}
 </style>
