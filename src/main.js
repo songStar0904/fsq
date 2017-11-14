@@ -35,7 +35,8 @@ Vue.config.productionTip = false
 Vue.directive('title', {
   inserted: function (el, binding) {
     document.title = el.innerText
-    el.remove()
+    // el.remove() 这个在ie存在兼容性问题
+    el.parentNode.removeChild(el)
   }
 })
 
