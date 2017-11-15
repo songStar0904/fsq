@@ -1,67 +1,86 @@
 <template>
 <div class="goods-item" v-if="goods">
 <div v-title>湘潭福盛全官网 - {{goods.name}}</div>
-<div class="head-left">
-<!-- <p>{{lensLeft}}</p><p>{{wrapLeft}}</p> -->
-  <div class="wrap" ref="wrap" @mouseover="showLens=true" @mouseout="showLens=false" @mousemove="doMouseMove($event)">
-  	<ul class="goods-img" :style="{marginLeft: toMove + 'px'}">
-  		<li class="img-item" v-for="item in goods.style[currentStyle].img">
-  			<img :src="item.url" alt="">
-  		</li>
-  	</ul>
-  	<span class="img-lens" v-show="showLens==true" :style="{left: lensX+'px', top: lensY + 'px'}"></span>
-  </div>
-  <div class="page">
-  	<div class="page-item" v-for="(item, index) in goods.style[currentStyle].img" @mouseover="toGo(index)" :class="{actived:current===index}">
-  	<span class="arrow"></span>
-  		<img :src="item.url" alt="">
-  	</div>
-  </div>
-  <transition name="el-fade-in-linear">
-  <div class="bigImg" v-show="showLens">
-  <img :src="goods.style[currentStyle].img[current].url" alt="" :style="{left: bigLeft+'px', top: bigTop + 'px'}">
-  </div>
-  </transition>
-  </div>
-  <div class="head-right">
-    <div class="goods-name">{{goods.name}}</div>
-    <div class="goods-meta">
-      <span class="label">分类：</span> <span class="goods-type"  v-if="goods.type" v-text="goods.type.type_name"></span><br><br>
-      <span class="label">标签：</span> <span class="goods-tag" v-if="goods.tag" v-for="item in goods.tag">
-      <el-tag :type="item.color" v-if="item.val" v-text="item.name"></el-tag>
-      </span>
-      <span class="goods-tag" v-if="!goods.tag[0].val&&!goods.tag[1].val">无</span>
-    </div>
+<h3 class="goods-name">{{goods.name}}</h3>
+<span class="goods-tag" v-if="goods.tag" v-for="item in goods.tag">
+  <el-tag :type="item.color" v-if="item.val" v-text="item.name"></el-tag>
+</span>
+<el-row :gutter="20">
+  <el-col :span="12">
+    <goods-img class="head-right" :$style="goods.style" :currentStyle="currentStyle" :el="$refs.wrap" ref="warp"></goods-img>
+  </el-col>
+  <el-col :span="12">
+      <div class="head-right">
+    <section class="widget">
+    <el-row class="sub row">
+      <el-col :span="4">批发量：</el-col> 
+      <el-col :span="20"class="goods-sub">
+        <el-row :gutter="20">
+          <el-col v-for ="item in sub":span="24/sub.length">≥{{item.name}} 件</el-col>
+        </el-row>
+      </el-col>
+    </el-row>
+    <el-row class="price row">
+      <el-col :span="4">单&nbsp;&nbsp;&nbsp;&nbsp;价：</el-col>
+      <el-col :span="20" class="goods-price text-orange">
+       <el-row :gutter="20">
+          <el-col v-for ="item in sub":span="24/sub.length">￥&nbsp;{{item.price | filterMoney}}&nbsp;元</el-col>
+        </el-row>
+      </el-col>
+    </el-row>
+    </section>
     <el-row class="goods-ind">
   <el-col :span="8" class="goods-ind-1"><span>浏览：</span> <span class="goods-view text-success">{{goods.view}}</span></el-col>
   <el-col :span="8" class="goods-ind-2"><span>销量：</span> <span class="goods-sale text-success">{{goods.sales_volume}}</span></el-col>
   <el-col :span="8" class="goods-ind-3"> <span>收藏：</span> <span class="goods-comment text-success">{{love}}</span></el-col>
 </el-row>
-    <div class="style">
-      <span>外&nbsp;&nbsp;&nbsp;&nbsp;观：</span> <span class="goods-style">
+<section>
+    <el-row class="style row">
+      <el-col :span="4">外&nbsp;&nbsp;&nbsp;&nbsp;观：</el-col>
+      <el-col :span="20" class="goods-style">
         <span class="style-item" v-for="(item, index) in goods.style" :class="{actived:currentStyle===index}"@click="changeStyle(index)">{{item.name}}</span>
-      </span>
-    </div>
-    <div class="sub">
-      <span>批发量：</span> <span class="goods-sub">
-        <span class="sub-item" v-for="(item, index) in goods.sub" :class="{actived:currentSub===index}"@click="changeSub(index)">{{item.name}}</span>
-      </span>
-    </div>
-    <div class="sub">
-      <span>规&nbsp;&nbsp;&nbsp;&nbsp;格：</span> <span class="goods-sub">
-        <span class="sub-item" v-for="(item, index) in sub" :class="{actived:currentSub2===index}"@click="currentSub2=index">{{item.name}}</span>
-      </span>
-    </div>
-    <div class="goods-price text-orange">￥&nbsp;{{goods.sub[currentSub].price}}&nbsp;元</div>
-    <div class="btn">
-    <el-button type="danger" size="large" @click="buyGoods('buy')">立即购买</el-button>
-    <el-button type="success" size="large" @click="buyGoods"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;&nbsp;加入购物车</el-button>
+      </el-col>
+    </el-row>
+    <el-row class="size row">
+      <el-col :span="4">规&nbsp;&nbsp;&nbsp;&nbsp;格：</el-col>
+      <el-col :span="20" class="goods-size">
+         <el-row>
+          <div v-for="(size, index) in style" class="size-box">
+            <transition-group name="el-zoom-in-center">
+           <div v-for="item in size.size" v-show="currentStyle === index" :key="index" class="size-item">
+               <el-col :span="5">{{item.name}}</el-col>
+               <el-col :span="8">{{currentPrice | filterMoney}}元</el-col>
+               <el-col :span="11">
+                <el-input-number v-model="item.num" :min="0" size="small"></el-input-number>
+               </el-col>
+           </div>
+         </transition-group>
+           </div> 
+         </el-row>
+      </el-col>
+    </el-row>
+    </section>
+    <section class="summary text-orange">
+      <transition name="el-zoom-in-bottom">
+      <detailed-list class="detailed-list" :$style="style" v-show="showList"></detailed-list>
+    </transition>
+      <el-row>
+        <el-col :span="8">已选 <span style="font-size: 20px">{{total}}</span> 件</el-col>
+        <el-col :span="8">共计 <span style="font-size: 20px">{{totalPrice | filterMoney}}</span> 元</el-col>
+        <el-col :span="8"><el-button type="text" @click="showList = !showList">已选清单<i class="fa fa-angle-up fa-lg" :class="{down:showList}"></i></el-button></el-col>
+      </el-row>
+    </section>
+    <section class="btn">
+    <el-button type="danger" size="large" @click="buyGoods('buy')" :disabled="!canBuy">立即购买</el-button>
+    <el-button type="success" size="large" @click="buyGoods" :disabled="!canBuy"><i class="fa fa-shopping-cart" ></i>&nbsp;&nbsp;&nbsp;&nbsp;加入购物车</el-button>
     <span class="collect" :class="{collected: collectTitle==='已收藏'}" @click="collect">
     <i class="fa fa-heart"></i><span> {{collectTitle}}</span>
     </span>
-    </div>
+    </section>
   </div>
-  <el-tabs type="border-card" >
+  </el-col>
+</el-row>
+  <el-tabs type="border-card" :class="{fixed: true}">
   <el-tab-pane v-html="goods.detail" class="goods-detail-header">
     <span slot="label"><i class="el-icon-date"></i> 商品详情</span>
     商品详情
@@ -73,11 +92,13 @@
 </template>
 <script type="text/javascript">
 import {commentBox} from '@/components'
+import {detailedList, goodsImg} from '@/components/goods'
 export default{
   data () {
     return {
       goods: [],
       comment: [],
+      sub: [],
       cart: {
         num: 1
       },
@@ -85,23 +106,6 @@ export default{
       currentStyle: 0,
       // 当前选择的规格
       currentSub: 0,
-      currentSub2: 0,
-      // 放大倍数
-      scale: 2,
-      current: 0,
-      toMove: 0,
-      showLens: false,
-      offsetX: 0,
-      offsetY: 0,
-      lensLeft: 0,
-      lensTop: 0,
-      wrapWidth: 400,
-      wrapHeight: 450,
-      wrapLeft: 0,
-      wrapTop: 255,
-      currentImg: '',
-      bigLeft: 0,
-      bigTop: 0,
       noDataTitle: '暂无评论╮(╯▽╰)╭',
       type: 'goods',
       // 用户是否收藏
@@ -109,46 +113,62 @@ export default{
       // 收藏数
       love: 0,
       collectTitle: '收藏宝贝',
-      sub: [{
-        name: 'L'
+      // 当前价格
+      currentPrice: 0,
+      // 总数量
+      total: 0,
+      // 总金额
+      totalPrice: 0,
+      // 最低批发量
+      minNum: 0,
+      // 展示已选清单
+      showList: false,
+      style: [{
+        name: '蓝色',
+        size: [{
+          name: 'L',
+          num: 0
+        }, {
+          name: 'XL',
+          num: 0
+        }, {
+          name: 'XXL',
+          num: 0
+        }, {
+          name: 'XXXL',
+          num: 0
+        }]
       }, {
-        name: 'XL'
-      }, {
-        name: 'XXL'
-      }, {
-        name: 'XXXL'
+        name: '黄色',
+        size: [{
+          name: 'L',
+          num: 0
+        }, {
+          name: 'XL',
+          num: 0
+        }, {
+          name: 'XXL',
+          num: 0
+        }]
       }]
     }
   },
-  created () {
+  mounted () {
     this.getGoods()
   },
-  mounted () {
-    window.onresize = () => {
-      this.init()
-    }
-  },
   computed: {
-    lensX () {
-      if (this.lensLeft < 0) {
-        return 0
-      } else if (this.lensLeft > this.wrapWidth / 2) {
-        return this.wrapWidth / 2
-      } else {
-        return this.lensLeft
-      }
-    },
-    lensY () {
-      if (this.lensTop < 0) {
-        return 0
-      } else if (this.lensTop > this.wrapHeight / 2) {
-        return this.wrapHeight / 2
-      } else {
-        return this.lensTop
-      }
-    },
     isLogin () {
       return this.$store.state.user.islogin
+    },
+    canBuy () {
+      return this.total >= this.sub[0].name
+    }
+  },
+  filters: {
+    filterMoney (val) {
+      if (typeof val === 'number') {
+        return val.toFixed(2)
+      }
     }
   },
   watch: {
@@ -158,6 +178,23 @@ export default{
       } else {
         this.collectTitle = '收藏宝贝'
       }
+    },
+    style: {
+      handler (val) {
+        this.total = 0
+        val.forEach((item) => {
+          item.size.forEach((item) => {
+            this.total += item.num
+          })
+        })
+      },
+      deep: true
+    },
+    total (val) {
+      if (this.canBuy) {
+        this.currentPrice = this.getCurrentPrice()
+      }
+      this.totalPrice = this.total * this.currentPrice
     }
   },
   methods: {
@@ -169,9 +206,11 @@ export default{
           this.goods = res.data[0]
           this.collected = res.data[0].collect
           this.love = res.data[0].love
-          this.$nextTick(() => {
-            this.init()
+          this.sub = res.data[0].sub.sort((a, b) => {
+            return a.name - b.name
           })
+          this.currentPrice = res.data[0].sub[0].price
+          // this.getSizeNum(res.data[0].style)
         } else {
           this.$message.error(res.msg)
         }
@@ -187,28 +226,27 @@ export default{
     changeSub (i) {
       this.currentSub = i
     },
-    init () {
-      // console.log(this.$refs.wrap)
-      let rect = this.$refs.wrap.getBoundingClientRect()
-      this.wrapWidth = rect.width
-      this.wrapHeight = rect.height
-      this.wrapLeft = rect.left
-      this.wrapTop = rect.top
+    // 给不同的style 添加 size num
+    getSizeNum (style) {
+      this.style = style.map((item) => {
+        item['size'] = [{
+          name: 'XL',
+          num: 0
+        }, {
+          name: 'XL',
+          num: 0
+        }]
+      })
     },
-    toGo (index) {
-      this.current = index
-      this.toMove = -this.current * this.wrapWidth
-    },
-    doMouseMove (e) {
-      this.offsetX = e.pageX - this.wrapLeft
-      this.offsetY = e.pageY - this.wrapTop
-      this.lensLeft = this.offsetX - this.wrapWidth / 4
-      this.lensTop = this.offsetY - this.wrapHeight / 4
-      this.moveBigImg()
-    },
-    moveBigImg () {
-      this.bigLeft = -this.lensX * 2
-      this.bigTop = -this.lensY * 2
+    // 获得当前单价
+    getCurrentPrice () {
+      let j
+      for (let i = 0; i < this.sub.length; i++) {
+        if (this.total >= this.sub[i].name) {
+          j = i
+        }
+      }
+      return this.sub[j].price
     },
     buyGoods (type) {
       this.addCart(type)
@@ -235,9 +273,11 @@ export default{
     addCart (type) {
       if (this.isLogin) {
         this.cart.name = this.goods.name
-        this.cart.style = this.goods.style[this.currentStyle]
+        this.cart.style = this.goods.style
         this.cart.sub = this.goods.sub[this.currentSub]
         this.cart.gid = this.goods.id
+        this.cart.total = this.total
+        this.cart.totalPrice = this.totalPrice
         this.$store.commit('SET_PCART', this.cart)
         this.$store.dispatch('CHANGE_CART')
           .then((res) => {
@@ -253,7 +293,9 @@ export default{
     }
   },
   components: {
-    commentBox
+    commentBox,
+    detailedList,
+    goodsImg
   }
 }
 </script>
@@ -271,137 +313,84 @@ export default{
   	width: 1000px;
   	margin: 50px auto;
   }
-  .goods-item .head-left{
-  	position: relative;
-    display: inline-block;
-  }
-  .goods-item .head-left .wrap{
-  	width: 400px;
-  	height: 450px;
-  	overflow: hidden;
-  	position: relative;
-  }
-  .goods-item .head-left .bigImg{
-  	width: 400px;
-  	height: 450px;
-  	position: absolute;
-  	overflow: hidden;
-  	left: 480px;
-  	top: 0;
-    z-index: 10000;
-  }
-  .goods-item .head-left .bigImg img{
-  	position: absolute;
-  	width: 800px;
-  	height: 900px;
-  }
-  .goods-item .head-left .img-lens{
-  	position: absolute;
-  	width: 50%;
-  	height: 50%;
-    background: url(https://img-tmdetail.alicdn.com/tps/i4/T12pdtXaldXXXXXXXX-2-2.png) repeat scroll 0 0 transparent;
-  	//background-color: rgba(255,255,255,.5);
-    //border: 1px solid #eee;
-    top: 0;
-    left: 0;
-    cursor: move;
-  }
-  .goods-item .head-left .wrap ul{
-  	width: 20000px;
-  	height: 100%;
-  	transition: margin-left 0.5s ease;
-  }
-  .goods-item .head-left .wrap ul li{
-  	float: left;
-  	width: 400px;
-  	height: 100%;
-  }
-  .goods-item .head-left .page{
-  	width: 400px;
-  	height: 60px;
-  	margin-top: 10px;
-  }
-  .goods-item .head-left .page .page-item.actived{
-  	border-color: #13CE66;
-  	width: 50px;
-  	height: 50px;
-  }
-  .goods-item .head-left .page .page-item{
-  	position: relative;
-  	width: 50px;
-  	height: 50px;
-  	float: left;
-  	border: 3px solid transparent;
-  	margin-right: 6px;
-  }
-  .goods-item .head-left .page .page-item.actived .arrow{
-  	display: inline;
-  }
-  .goods-item .head-left .page .page-item .arrow{
-  	width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 5px 5px 5px;
-    border-color: transparent transparent #13CE66 transparent;
-    line-height: 0px;
-    _border-color: #000000 #000000 #13CE66 #000000;
-    position: absolute;
-    left: 50%;
-    margin-left: -5px;
-    top: -8px;
-    display: none;
-  }
-  .goods-item .head-right{
-    position: absolute;
-    width: 500px;
-    display: inline-block;
-    margin-left: 80px;
-  }
   .goods-item .head-right .goods-name{
     font-weight: bold;
     font-size: 30px;
     color: #333;
   }
-  .goods-item .head-right .goods-meta{
-    width: 200px;
-    padding-left: 20px;
-    margin:30px auto 30px;
-        background-color: #f8f8f8;
-  }
-  .goods-item .head-right .goods-meta .label{
-    color: #333;
-    font-weight: 700;
-  }
   .goods-item .head-right .goods-ind{
-        border: 1px dotted #c9c9c9;
-            border-width: 1px 0;
-    margin: -1px 20px 40px 0;
-    padding: 10px 0;
+    border: 1px dotted #c9c9c9;
+    border-width: 1px 0;
+    margin: 30px 0 35px;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 14px;
   }
   .goods-item .head-right .goods-ind .goods-ind-2{
         border-right: 1px solid #e5dfda;
         border-left: 1px solid #e5dfda;
   }
-  .goods-item .head-right .goods-ind .goods-ind-1,.goods-item .head-right .goods-ind .goods-ind-2,.goods-item .head-right .goods-ind .goods-ind-3{
-    text-align: center;
-  }
   .goods-item .head-right .style .style-item, .goods-item .head-right .sub .sub-item{
     padding: 5px 10px;
     border: 1px solid rgba(153, 153, 153, 0.6);
     color: rgba(153, 153, 153, 0.6);
-    margin: 0 10px;
+    margin-right: 20px;
     cursor: pointer;
   }
-  .goods-item .head-right .sub{
+  .goods-item .head-right .row{
     margin: 25px 0;
   }
-  .goods-item .head-right .style .style-item.actived, .goods-item .head-right .sub .sub-item.actived{
+  .goods-item .head-right .style .style-item.actived{
     color: #13CE66;
     border-color: #13CE66;
   }
+  .goods-item .head-right .widget{
+    padding: 0 10px;
+    border-top: 1px solid #ff7300;
+    background-color: #fff5ec;
+    overflow: hidden;
+  }
+  .goods-item .head-right .widget .row{
+    margin: 15px 0;
+  }
   .goods-item .head-right .goods-price{
-        font-size: 30px;
-    margin: 25px 0;
+        font-size: 20px;
+  }
+  .goods-item .head-right .goods-size{
+    position: relative;
+    height: 160px;
+  }
+  .goods-item .head-right .goods-size .size-box{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  .goods-item .head-right .goods-size .size-box .size-item{
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+  .goods-item .head-right .summary{
+    position: relative;
+    //background-color: rgb(238, 246, 243);
+    line-height: 34px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .goods-item .head-right .summary>.detailed-list{
+    position: absolute;
+    left: 0;
+    bottom: 36px;
+    z-index: 1001;
+    text-align: left;
+  }
+  .goods-item .head-right .summary button i{
+    margin-left: 8px;
+    transition: all ease .5s;
+  }
+  .goods-item .head-right .summary button i.down{
+    transform: rotate(180deg);
   }
   .goods-item .head-right .collect{
     margin-left: 10px;
