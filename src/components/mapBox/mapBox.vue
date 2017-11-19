@@ -38,7 +38,6 @@ export default {
   }
 }
 </script>
-
 <style>
 .bm-view {
   width: 100%;

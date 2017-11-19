@@ -166,6 +166,11 @@ export default {
       smsDisable: false
     }
   },
+  computed: {
+    md5Password (val) {
+      return md5(val)
+    }
+  },
   mounted () {
     this.$store.dispatch('GET_CART')
     // 判断是否登陆
@@ -283,9 +288,6 @@ export default {
     },
     setRoute (val) {
       this.$store.commit('SET_USER_ROUTE', val)
-    },
-    md5Password (val) {
-      return md5(val)
     }
   }
 }
@@ -315,7 +317,6 @@ export default {
     box-sizing: border-box;
     border-bottom: 5px solid transparent;
     font-size: 14px;
-    //color: rgb(72, 106, 92);
 }
 .main-nav .user,.cart{
   float: right;

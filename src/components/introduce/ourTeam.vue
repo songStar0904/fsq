@@ -8,7 +8,7 @@
 				<i class="el-icon-arrow-left"></i>
 				</div>
 		  </el-col>
-		  <el-col :span="20" :style="{overflow: 'hidden',position: 'relative', maxWidth:'830px'}">
+		  <el-col :span="22" :style="{overflow: 'hidden',position: 'relative', maxWidth:'830px'}">
 		  	<person-item v-for="(item, index) in team" :person="item" :key="index" :style="'transform: translateX('+ 210 * ((index+current) % team.length) +'px)'"></person-item>
 		</el-col>
 		  <el-col :span="1">

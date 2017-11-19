@@ -36,8 +36,15 @@
     <el-form-item label="手机:" label-width="100px" prop="phone">
       <el-input v-model="form.phone"></el-input>
     </el-form-item>
-    <el-form-item label="收货地址:" label-width="100px" prop="addr">
-      <el-input v-model="form.addr"></el-input>
+    <el-form-item label="所在大区:" label-width="100px" prop="addr1">
+    <el-cascader
+      :options="options"
+      v-model="form.addr1"
+      @change="handleChange">
+    </el-cascader>
+  </el-form-item>
+    <el-form-item label="详细地址:" label-width="100px" prop="addr2"> 
+      <el-input v-model="form.addr2"></el-input>
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
@@ -48,6 +55,7 @@
 	</div>
 </template>
 <script>
+import {regionData, CodeToText} from 'element-china-area-data'
 export default{
   props: ['init'],
   data () {
@@ -70,18 +78,23 @@ export default{
       down: true,
       title: '添加地址',
       dialogFormVisible: false,
+      options: regionData,
+      // 默认所在区 湖南湘潭岳塘
+      default_addr: ['430000', '430300', '430304'],
       // 填写地址表单
       editForm: {
         name: '',
         phone: '',
-        addr: '',
+        addr1: '',
+        addr2: '',
         default: 0,
         id: 0
       },
       addForm: {
         name: '',
         phone: '',
-        addr: '',
+        addr1: '',
+        addr2: '',
         default: 0
       },
       form: {},
@@ -91,7 +104,8 @@ export default{
           { required: true, message: '请输入收货人', trigger: 'blur' },
           { min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'blur' }
         ],
-        addr: { required: true, message: '请输入地址', trigger: 'change' },
+        addr1: { required: true, message: '请选择所在地区', trigger: 'change' },
+        addr2: { required: true, message: '请输入详细地址', trigger: 'change' },
         phone: { validator: checkPhone, trigger: 'change' }
       }
     }
@@ -144,6 +158,17 @@ export default{
           }
         })
     },
+    // 地址数字转文字
+    codeToText () {
+      let addr = ''
+      if (typeof this.form.addr1 !== 'string') {
+        this.form.addr1.forEach((item) => {
+          addr += CodeToText[item]
+        })
+        console.log(addr, this.form.addr1)
+        this.form.addr1 = addr
+      }
+    },
     setDefault (index, id) {
       console.log(index, id)
       this.$fetch.addr.setDefault({
@@ -163,16 +188,20 @@ export default{
         }
       })
     },
-    addAddress () {
+    openDialog () {
       this.dialogFormVisible = true
+      this.form.addr1 = this.default_addr
+    },
+    addAddress () {
       this.form = this.addForm
       this.title = '添加地址'
+      this.openDialog()
     },
     editAddress (index, item) {
-      this.dialogFormVisible = true
       this.editForm = item
       this.form = this.editForm
       this.title = '修改地址'
+      this.openDialog()
     },
     delAddress (index, id) {
       this.$confirm('此操作将永久删除此地址, 是否继续?', '提示', {
@@ -199,6 +228,7 @@ export default{
       })
     },
     submitForm (formName) {
+      this.codeToText()
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$fetch.addr.add(this.form)
