@@ -68,3 +68,6 @@ a{
 a:hover{
   color: #13CE66;
 }
+:focus{
+  outline: none;
+}

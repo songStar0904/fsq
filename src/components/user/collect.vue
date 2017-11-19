@@ -18,7 +18,7 @@
         </el-table-column>
         <el-table-column
           label="商品图片">
-           <template scope="props">
+           <template slot-scope="props">
            <img style="height:60px;" :src="props.row.style.img" alt="" />
           </template>
         </el-table-column>
@@ -26,7 +26,7 @@
           prop="type"
           label="分类"
           sortable>
-          <template scope="props" >
+          <template slot-scope="props" >
           <p>{{props.row.type.type_name}}</p>
           </template>
         </el-table-column>
@@ -34,7 +34,7 @@
           label="价格"
           prop="price"
           sortable>
-           <template scope="props" >
+           <template slot-scope="props" >
         <span style="color:#f60;">￥{{ props.row.sub.price }}.00 元</span>
           </template>
         </el-table-column>
@@ -42,18 +42,18 @@
           label="收藏时间"
           prop="date"
           sortable>
-           <template scope="props">
+           <template slot-scope="props">
         <el-icon name="time"></el-icon>
         <span style="margin-left: 10px">{{ props.row.date }}</span>
           </template>
         </el-table-column>
         <el-table-column
           label="操作">
-          <template scope="props">
+          <template slot-scope="props">
           <router-link :to="{ name: 'goodsItem', params: { id: props.row.gid }}">
               <el-button type="info" size="small"><i class="fa fa-credit-card-alt"></i></el-button>
               </router-link>
-            <el-button type="danger" size="small" icon="delete" @click="delete_data(props.row)"></el-button>
+            <el-button type="danger" size="small" icon="el-icon-delete" @click="delete_data(props.row)"></el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -61,7 +61,7 @@
       <div slot="handler">
         <el-button
           type="danger"
-          icon="delete"
+          icon="el-icon-delete"
           size="small"
           :disabled="batch_select.length === 0"
           @click="on_batch_del"

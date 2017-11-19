@@ -67,5 +67,13 @@ module.exports = {
         loader: 'babel-loader'
       }
     ]
+  },
+  // 忽略不需要打包的库 使用cdn引入
+  externals: {
+    'vue': 'Vue',
+    'vue-router': 'VueRouter',
+    'vuex': 'Vuex',
+    'axios': 'axios',
+    'element-ui': 'ELEMENT'
   }
 }

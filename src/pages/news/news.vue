@@ -11,19 +11,10 @@
 </el-row>
 </div>
 </template>
-<script type="text/javascript">
-export default{
-  data () {
-    return {
-    }
-  }
-}
-</script>
 <style type="text/css" scoped>
 .news-box{
   width: 100%;
-    -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-     background: #f4f4f4;
+  transition: all 0.4s ease;
+  background: #f4f4f4;
   }
 </style>

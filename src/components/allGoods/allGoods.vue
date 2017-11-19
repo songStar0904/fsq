@@ -30,8 +30,6 @@
     </transition-group>
 </el-row>
       </div>
-<!-- <goods-box v-for="(type, index) in typeList" :typeName="type.name" :id="'type'+index" :typeId="type.id" v-if="type.id>0" :key="type"></goods-box>
-<goods-nav :typeList="typeList"></goods-nav> -->
 <bottom-tool-bar>
         <div slot="page">
           <el-pagination

@@ -1,20 +1,9 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-// import Home from '@/pages/home'
-// import aboutUs from '@/pages/aboutUs/aboutUs'
-// import news from '@/pages/news/news'
-// import goods from '@/pages/goods/goods'
-// import goodsItem from '@/pages/goodsItem/goodsItem'
-// import allGoods from '@/components/allGoods/allGoods'
-// import allNews from '@/components/allNews/allNews'
-// import buy from '@/pages/buy/buy'
-// import introduce from '@/pages/introduce/introduce'
-// import newsItem from '@/pages/newsItem/newsItem'
-// import user from '@/pages/user/user'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
   mode: 'history',
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition || to.name === 'introduce') {

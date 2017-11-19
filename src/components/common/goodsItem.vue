@@ -13,7 +13,7 @@
         </div>
         <div class="bottom clearfix">
           <span class="price">￥ {{goodsItem.sub[0].price}}</span>
-          <el-button type="success" class="button">查看详情</el-button>
+          <el-button type="primary" class="button">查看详情</el-button>
         </div>
       </div>
     </el-card> 

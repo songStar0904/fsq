@@ -15,21 +15,21 @@
       label="商品名称"
       width="200"
     show-overflow-tooltip> 
-    <template scope="scope">{{scope.row.data.name}} · {{scope.row.data.style.name}} · {{scope.row.data.sub.name}}</template>
+    <template slot-scope="scope">{{scope.row.data.name}} · {{scope.row.data.style.name}} · {{scope.row.data.sub.name}}</template>
     </el-table-column>
     <el-table-column
       label="商品图片"
       width="120"
       align="center"
     header-align="center">
-       <template scope="scope"><img :src="scope.row.data.style.img" alt=""></template>
+       <template slot-scope="scope"><img :src="scope.row.data.style.img" alt=""></template>
     </el-table-column>
     <el-table-column
       label="单价"
       width="100"
       align="center"
     header-align="center">
-    <template scope="scope">￥  {{scope.row.data.sub.price}}</template>
+    <template slot-scope="scope">￥  {{scope.row.data.sub.price}}</template>
     </el-table-column>
     
     <el-table-column
@@ -38,7 +38,7 @@
       width="200"
       align="center"
     header-align="center">
-    <template scope="scope" ><el-input-number v-model="scope.row.num" size="small" :min="1" @change="handleChange(scope.row)" ></el-input-number></template>
+    <template slot-scope="scope" ><el-input-number v-model="scope.row.num" size="small" :min="1" @change="handleChange(scope.row)" ></el-input-number></template>
     </el-table-column>
     <el-table-column
       label="小计"
@@ -46,14 +46,14 @@
       class-name="subtotal"
       align="center"
     header-align="center">
-    <template scope="scope">￥  {{scope.row.num * scope.row.data.sub.price }}</template>
+    <template slot-scope="scope">￥  {{scope.row.num * scope.row.data.sub.price }}</template>
     </el-table-column>
    <el-table-column label="操作">
-      <template scope="scope">
+      <template slot-scope="scope">
         <el-button
           size="small"
           type="danger"
-          @click="del(scope.$index, scope.row.id)" icon="delete"></el-button>
+          @click="del(scope.$index, scope.row.id)" icon="el-icon-delete"></el-button>
       </template>
     </el-table-column>
   </el-table>

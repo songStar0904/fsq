@@ -16,7 +16,7 @@
       <el-col :span="4">批发量：</el-col> 
       <el-col :span="20"class="goods-sub">
         <el-row :gutter="20">
-          <el-col v-for ="item in sub":span="24/sub.length">≥{{item.name}} 件</el-col>
+          <el-col v-for ="(item, index) in sub":span="24/sub.length" :key="index">≥{{item.name}} 件</el-col>
         </el-row>
       </el-col>
     </el-row>
@@ -24,7 +24,7 @@
       <el-col :span="4">单&nbsp;&nbsp;&nbsp;&nbsp;价：</el-col>
       <el-col :span="20" class="goods-price text-orange">
        <el-row :gutter="20">
-          <el-col v-for ="item in sub":span="24/sub.length">￥&nbsp;{{item.price | filterMoney}}&nbsp;元</el-col>
+          <el-col v-for ="(item, index) in sub":span="24/sub.length" :key="index">￥&nbsp;{{item.price | filterMoney}}&nbsp;元</el-col>
         </el-row>
       </el-col>
     </el-row>
@@ -38,7 +38,7 @@
     <el-row class="style row">
       <el-col :span="4">外&nbsp;&nbsp;&nbsp;&nbsp;观：</el-col>
       <el-col :span="20" class="goods-style">
-        <span class="style-item" v-for="(item, index) in goods.style" :class="{actived:currentStyle===index}"@click="changeStyle(index)">{{item.name}}</span>
+        <span class="style-item" v-for="(item, index) in goods.style" :class="{actived:currentStyle===index}" @click="changeStyle(index)" :key="index">{{item.name}}</span>
       </el-col>
     </el-row>
     <el-row class="size row">
@@ -72,7 +72,7 @@
     </section>
     <section class="btn">
     <el-button type="danger" size="large" @click="buyGoods('buy')" :disabled="!canBuy">立即购买</el-button>
-    <el-button type="success" size="large" @click="buyGoods" :disabled="!canBuy"><i class="fa fa-shopping-cart" ></i>&nbsp;&nbsp;&nbsp;&nbsp;加入购物车</el-button>
+    <el-button type="primary" size="large" @click="buyGoods" :disabled="!canBuy"><i class="fa fa-shopping-cart" ></i>&nbsp;&nbsp;&nbsp;&nbsp;加入购物车</el-button>
     <span class="collect" :class="{collected: collectTitle==='已收藏'}" @click="collect">
     <i class="fa fa-heart"></i><span> {{collectTitle}}</span>
     </span>

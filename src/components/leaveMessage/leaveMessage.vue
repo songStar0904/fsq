@@ -21,7 +21,7 @@
     <el-input type="textarea" v-model="form.content"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="success" @click="submitForm('form')">提  交</el-button>
+    <el-button type="primary" @click="submitForm('form')">提  交</el-button>
   </el-form-item>
   	</el-form>
   </el-col>
@@ -65,7 +65,6 @@ export default{
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          // let data = JSON.parse(this.form)
           console.log(this.$fetch)
           this.$fetch.leaveMsg.add(this.form).then((res) => {
             if (res.status) {

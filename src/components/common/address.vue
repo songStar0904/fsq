@@ -5,7 +5,7 @@
 		<div  class="box-card clearfix"  @click="current = index" :class="{checked:current===index}" >
         <div class="heard">
         	<div class="name">{{item.name}}</div>
-        	<div class="edit"v-show="current===index" @click="editAddress(index, item)"><i class="el-icon-edit"></i></div>
+        	<div class="edit btn"v-show="current===index" @click="editAddress(index, item)"><i class="el-icon-edit"></i></div>
         </div>
         <div class="content">{{item.addr}}</div>
         <div class="footer">
@@ -13,7 +13,7 @@
         	<span v-else @click="setDefault(index, item.id)">设为默认</span></div>
         	<div class="phone"><i class="fa fa-phone"></i> {{item.phone}}</div>
         	<div class="del" v-show="current===index" @click="delAddress(index, item.id)">
-        	<i class="el-icon-delete2"></i>
+        	<i class="el-icon-delete btn"></i>
         	</div>
         </div>
 </div>
@@ -39,11 +39,11 @@
     <el-form-item label="收货地址:" label-width="100px" prop="addr">
       <el-input v-model="form.addr"></el-input>
     </el-form-item>
-    <el-form-item style="float:right">
+  </el-form>
+  <div slot="footer" class="dialog-footer">
     <el-button type="primary" @click="submitForm('form')">提  交</el-button>
     <el-button @click="dialogFormVisible = false">取 消</el-button>
-    </el-form-item>
-  </el-form>
+    </div>
 </el-dialog>
 	</div>
 </template>
@@ -237,15 +237,13 @@ export default{
     .box-card{
 		padding: 20px;
 		border: 1px solid #eaeefb;
-        border-radius: 4px;
-        transition: .2s;
+    border-radius: 4px;
+    transition: .2s;
 		position: relative;
 		color: #333;
 		font-size: 14px;
 		background-color: #fff;
-		//cursor: pointer;
 		margin-bottom: 30px;
-
 	}
 	.box-card:hover{
 		border-color: #13ce66;
@@ -261,6 +259,7 @@ export default{
 	.edit,.del{
 		position: absolute;
 		right: 20px;
+    cursor: pointer;
 	}
 	.edit{
 		top: 20px;
@@ -268,6 +267,12 @@ export default{
 	.del{
 		bottom: 20px;
 	}
+  .edit:hover{
+    color: #409eff;
+  }
+  .del:hover{
+    color: #fa5555;
+  }
 	.content{
 		margin: 20px 0;
 	}

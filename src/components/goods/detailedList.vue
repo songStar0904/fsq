@@ -10,7 +10,7 @@
     <el-table-column
       prop="num"
       label="件数">
-      <template scope="scope">
+      <template slot-scope="scope">
       	{{scope.row.size | filterNum}} 件
       </template>
     </el-table-column>
@@ -18,8 +18,8 @@
       prop="size"
       label="尺码"
       width="250">
-      <template scope="scope">
-      	<span style="margin-right:10px" v-for="item in scope.row.size">{{item.name}}({{item.num}})</span>
+      <template slot-scope="scope">
+      	<span style="margin-right:10px" v-for="item in scope.row.size" v-if="item>0">{{item.name}}({{item.num}})</span>
       </template>
     </el-table-column>
   </el-table>

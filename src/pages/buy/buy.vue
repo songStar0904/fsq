@@ -1,7 +1,7 @@
 <template>
 	<div class="buy">
   <div v-title>湘潭福盛全官网 - 购买流程</div>
-<el-steps :space="200" :active="active" finish-status="success">
+<el-steps :space="200" :active="active" finish-status="success" align-center>
   <el-step title="加入购物车"></el-step>
   <el-step title="购物车结算"></el-step>
   <el-step title="选择地址"></el-step>
@@ -14,7 +14,7 @@
 </div>
 <div class="button-box">
 <el-button  @click="pre" size="large" :disabled="pDisabled">上一步</el-button>
-<el-button type="success" size="large" @click="next" :disabled="nDisabled">下一步</el-button>
+<el-button type="primary" size="large" @click="next" :disabled="nDisabled">下一步</el-button>
 </div>
 	</div>
 </template>
