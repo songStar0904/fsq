@@ -5,9 +5,9 @@ import App from './App'
 import router from './router'
 
 // element-ui
-import ElementUI from 'element-ui'
+// import ElementUI from 'element-ui'
 import './assets/theme/index.css'
-Vue.use(ElementUI)
+// Vue.use(ElementUI)
 // 引入font
 import 'font-awesome/scss/font-awesome.scss'
 // 引入commoncss

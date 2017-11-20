@@ -7,7 +7,7 @@
         	<div class="name">{{item.name}}</div>
         	<div class="edit btn"v-show="current===index" @click="editAddress(index, item)"><i class="el-icon-edit"></i></div>
         </div>
-        <div class="content">{{item.addr}}</div>
+        <div class="content">{{item.addrIndex | codeToText}}<span>{{item.addr}}</span></div>
         <div class="footer">
         	<div class="set" ><span class="default" v-if="item.default">默认地址</span>
         	<span v-else @click="setDefault(index, item.id)">设为默认</span></div>
@@ -28,7 +28,7 @@
 <el-row :gutter="20">
   <el-col :span="12" :offset="10"><el-button class="more" type="text" @click="more">{{btnTitle}}  <i class="fa fa-angle-down" :class="{scale:down}"></i></el-button></el-col>
 </el-row>
-<el-dialog  :title="title" ref="form" :visible.sync="dialogFormVisible">
+<el-dialog :width="'40%'" :title="title" ref="form" :visible.sync="dialogFormVisible">
   <el-form :model="form" :rules="rules" ref="form">
     <el-form-item label="收货人:" label-width="100px" prop="name">
       <el-input v-model="form.name"></el-input>
@@ -36,15 +36,14 @@
     <el-form-item label="手机:" label-width="100px" prop="phone">
       <el-input v-model="form.phone"></el-input>
     </el-form-item>
-    <el-form-item label="所在大区:" label-width="100px" prop="addr1">
+    <el-form-item label="所在大区:" label-width="100px" prop="addrIndex">
     <el-cascader
       :options="options"
-      v-model="form.addr1"
-      @change="handleChange">
+      v-model="form.addrIndex">
     </el-cascader>
   </el-form-item>
-    <el-form-item label="详细地址:" label-width="100px" prop="addr2"> 
-      <el-input v-model="form.addr2"></el-input>
+    <el-form-item label="详细地址:" label-width="100px" prop="addr"> 
+      <el-input v-model="form.addr"></el-input>
     </el-form-item>
   </el-form>
   <div slot="footer" class="dialog-footer">
@@ -78,6 +77,7 @@ export default{
       down: true,
       title: '添加地址',
       dialogFormVisible: false,
+      // 区域数据
       options: regionData,
       // 默认所在区 湖南湘潭岳塘
       default_addr: ['430000', '430300', '430304'],
@@ -85,16 +85,16 @@ export default{
       editForm: {
         name: '',
         phone: '',
-        addr1: '',
-        addr2: '',
+        addrIndex: '',
+        addr: '',
         default: 0,
         id: 0
       },
       addForm: {
         name: '',
         phone: '',
-        addr1: '',
-        addr2: '',
+        addrIndex: '',
+        addr: '',
         default: 0
       },
       form: {},
@@ -104,17 +104,25 @@ export default{
           { required: true, message: '请输入收货人', trigger: 'blur' },
           { min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'blur' }
         ],
-        addr1: { required: true, message: '请选择所在地区', trigger: 'change' },
-        addr2: { required: true, message: '请输入详细地址', trigger: 'change' },
+        addrIndex: { type: 'array', required: true, message: '请选择所在地区', trigger: 'change' },
+        addr: { required: true, message: '请输入详细地址', trigger: 'change' },
         phone: { validator: checkPhone, trigger: 'change' }
       }
     }
   },
   watch: {
     current (val) {
-      // console.log(this.address[val])
       this.$emit('chooseAddress', this.address[val])
-      // this.$store.commit('SET_TCART_ADDRESS', this.address[val])
+    }
+  },
+  filters: {
+    // 地址数字转文字
+    codeToText (val) {
+      let addr = ''
+      val.forEach((item) => {
+        addr += CodeToText[item]
+      })
+      return addr
     }
   },
   computed: {
@@ -158,19 +166,8 @@ export default{
           }
         })
     },
-    // 地址数字转文字
-    codeToText () {
-      let addr = ''
-      if (typeof this.form.addr1 !== 'string') {
-        this.form.addr1.forEach((item) => {
-          addr += CodeToText[item]
-        })
-        console.log(addr, this.form.addr1)
-        this.form.addr1 = addr
-      }
-    },
+    // 设置默认地址
     setDefault (index, id) {
-      console.log(index, id)
       this.$fetch.addr.setDefault({
         id: id
       }).then((res) => {
@@ -188,20 +185,17 @@ export default{
         }
       })
     },
-    openDialog () {
-      this.dialogFormVisible = true
-      this.form.addr1 = this.default_addr
-    },
     addAddress () {
       this.form = this.addForm
       this.title = '添加地址'
-      this.openDialog()
+      this.dialogFormVisible = true
+      this.form.addrIndex = this.default_addr
     },
     editAddress (index, item) {
-      this.editForm = item
+      Object.assign(this.editForm, item)
       this.form = this.editForm
       this.title = '修改地址'
-      this.openDialog()
+      this.dialogFormVisible = true
     },
     delAddress (index, id) {
       this.$confirm('此操作将永久删除此地址, 是否继续?', '提示', {
@@ -228,16 +222,18 @@ export default{
       })
     },
     submitForm (formName) {
-      this.codeToText()
+      // this.codeToText()
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$fetch.addr.add(this.form)
             .then((res) => {
               if (res.status) {
+                this.getAddr()
                 if (this.title === '添加地址') {
                   this.address.push(res.data)
-                  // this.$refs['form'].resetFields()
+                  this.more()
                 }
+                this.$refs['form'].resetFields()
                 this.$message.success(res.msg)
               }
             })
@@ -249,7 +245,6 @@ export default{
       })
     },
     more () {
-      console.log(this.address.length)
       if (this.limitNum === this.address.length) {
         this.limitNum = this.length
         this.btnTitle = '展开'
@@ -264,7 +259,7 @@ export default{
 }
 </script>
 <style scoped>
-    .box-card{
+  .box-card{
 		padding: 20px;
 		border: 1px solid #eaeefb;
     border-radius: 4px;
