@@ -200,7 +200,7 @@ export default{
   methods: {
     getGoods () {
       this.$fetch.getPro.get({
-        id: this.$route.params.id
+        id: this.$route.query.id
       }).then((res) => {
         if (res.status) {
           this.goods = res.data[0]

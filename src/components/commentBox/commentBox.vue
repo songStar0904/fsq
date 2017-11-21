@@ -9,10 +9,12 @@
     element-loading-text="拼命加载中" v-if="data.length>0" v-for="(item, index) in data" :uid="userInfo.uid":comment="item" :key="index" @openReply="openReply" :floor="data.length-index+(length*(currentPage-1))" :type="type"
     @delSucess="delSucess"></reply-box>
     <div v-if="data.length==0" class="sofa">{{noDataTitle}}</div>
-    <div class="editor" v-show="show">
-<v-editor
-        :content="form.content"
-        v-model="form.content"></v-editor>
+    <div class="editor" v-show="commentShow">
+      <el-input
+        type="textarea"
+        placeholder="说说你的看法"
+        :autosize="{ minRows: 4, maxRows: 6}"
+        v-model="form.content"></el-input>
         <div class="btn">
         <el-button type="primary" @click="onSubmit">发送</el-button> <el-button type="text" @click="canel">取消</el-button>
         </div>
@@ -20,18 +22,18 @@
         <bottom-tool-bar>
         <div slot="page" v-if="total>length">
           <el-pagination
-      @current-change="handleCurrentChange"
-      :page-size="length"
-      :current-page.sync="currentPage"
-      layout="prev, pager, next, jumper"
-      :total="total">
-    </el-pagination>
+            @current-change="handleCurrentChange"
+            :page-size="length"
+            :current-page.sync="currentPage"
+            layout="prev, pager, next, jumper"
+            :total="total">
+          </el-pagination>
         </div>
       </bottom-tool-bar>
 	</div>
 </template>
 <script>
-import {replyBox, vEditor, bottomToolBar} from '@/components/common'
+import {replyBox, bottomToolBar} from '@/components/common'
 export default {
   props: ['id', 'noDataTitle', 'change', 'show', 'type'],
   data () {
@@ -52,7 +54,8 @@ export default {
       loading: false,
       userImg: 'http://cdn.fds.api.xiaomi.com/b2c-bbs/cn/1164593408/avatar.jpg?&width=50&height=50',
       content: '',
-      scroll: 0
+      scroll: 0,
+      commentShow: false
     }
   },
   watch: {
@@ -79,6 +82,9 @@ export default {
     },
     change (val) {
       this.getComment()
+    },
+    show (val) {
+      this.commentShow = val
     }
   },
   mounted () {
@@ -116,11 +122,11 @@ export default {
       this.form.fid = id
       this.$message('@' + responder + ':')
       // this.form.responder = responder
-      this.show = true
+      this.commentShow = true
     },
     // 取消
     canel () {
-      this.show = false
+      this.commentShow = false
     },
     // 页码选择
     handleCurrentChange (val) {
@@ -146,7 +152,6 @@ export default {
   },
   components: {
     replyBox,
-    vEditor,
     bottomToolBar
   }
 }
@@ -167,6 +172,8 @@ export default {
   	cursor: pointer;
   }
   .editor{
+    width: 100%;
+    display: inline-block;
     margin-top: 20px;
   }
   .editor .btn{

@@ -68,7 +68,6 @@ export default{
   },
   watch: {
     userInfo (val) {
-      console.log(val)
       if (val) {
         this.form.uid = val.uid
         this.form.nick = val.nick
@@ -86,7 +85,6 @@ export default{
   },
   methods: {
     onSubmit (value) {
-      console.log(value)
       let data
       if (value.uid) {
         data = value
@@ -117,7 +115,7 @@ export default{
     },
     getNews () {
       this.$fetch.news.get({
-        id: this.$route.params.id
+        id: this.$route.query.id
       }).then((res) => {
         if (res.status) {
           this.news = res.data[0]
