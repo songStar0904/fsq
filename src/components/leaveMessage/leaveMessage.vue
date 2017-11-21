@@ -30,17 +30,9 @@
 </template>
 <script type="text/javascript">
 import {mapBox} from '@/components/common'
+import {checkPhone} from '@/utils/checkForm'
 export default{
   data () {
-    var checkPhone = (rule, value, callback) => {
-      setTimeout(() => {
-        if (!(/^1[3|4|5|8][0-9]\d{8}$/.test(value))) {
-          return callback(new Error('请输入正确的手机'))
-        } else {
-          callback()
-        }
-      }, 500)
-    }
     return {
       title: 'Leave Messageasd',
       subtitle: null,

@@ -55,18 +55,10 @@
 </template>
 <script>
 import {regionData, CodeToText} from 'element-china-area-data'
+import {checkPhone} from '@/utils/checkForm.js'
 export default{
   props: ['init'],
   data () {
-    var checkPhone = (rule, value, callback) => {
-      setTimeout(() => {
-        if (!(/^1[3|4|5|7|8][0-9]\d{8}$/.test(value))) {
-          return callback(new Error('请输入正确的手机'))
-        } else {
-          callback()
-        }
-      }, 500)
-    }
     return {
       address: [],
       show: false,

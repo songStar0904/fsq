@@ -47,7 +47,6 @@ export default{
   },
   watch: {
     userInfo (val) {
-      console.log(val)
       if (val) {
         this.form = val
         this.parms.id = val.uid
@@ -58,9 +57,6 @@ export default{
     userInfo () {
       return this.$store.state.user.userInfo
     }
-  },
-  mounted () {
-    // console.log(this.$store.state.user.userInfo)
   },
   methods: {
     submitForm (formName) {
