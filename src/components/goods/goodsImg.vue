@@ -90,7 +90,6 @@ export default{
       this.toMove = -this.current * this.wrapWidth
     },
     doMouseMove (e) {
-      console.log(e)
       this.offsetX = e.pageX - this.wrapLeft
       this.offsetY = e.pageY - this.wrapTop
       this.lensLeft = this.offsetX - this.wrapWidth / 4

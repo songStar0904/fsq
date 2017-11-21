@@ -31,7 +31,6 @@
 	</div>
 </template>
 <script>
-import _ from 'lodash'
 import {replyBox, vEditor, bottomToolBar} from '@/components/common'
 export default {
   props: ['id', 'noDataTitle', 'change', 'show', 'type'],
@@ -65,7 +64,6 @@ export default {
       }
     },
     userInfo (val) {
-      console.log(val)
       if (val) {
         this.form.uid = val.uid
         this.form.nick = val.nick
@@ -136,10 +134,14 @@ export default {
       return this.$store.state.user.userInfo
     },
     newComment () {
-      return _.orderBy(this.comment, 'date', 'desc')
+      return this.comment.sort((a, b) => {
+        return a.date - b.date
+      })
     },
     hotComment () {
-      return _.orderBy(this.comment, 'love', 'desc')
+      return this.comment.sort((a, b) => {
+        return a.love - b.love
+      })
     }
   },
   components: {

@@ -9,14 +9,18 @@
         <span class="nav-item" v-for="item in orderList" :key="item.value" @click="order=item.value" :class="{actived:order===item.value}">{{item.name}}</span>
         </div>
         <div slot="page">
-          <el-autocomplete
-  v-model="str"
-  icon="search"
-  :on-icon-click="getGoods"
-  :fetch-suggestions="querySearchAsync"
-  placeholder="请输入商品名称"
-  @select="handleSelect"
-></el-autocomplete>
+        <el-autocomplete
+          v-model="str"
+          :fetch-suggestions="querySearchAsync"
+          placeholder="请输入商品名称"
+          @select="getGoods"
+          :select-when-unmatched="true"
+        ><i
+            class="el-icon-search el-input__icon"
+            slot="suffix"
+            @click="getGoods">
+          </i>
+        </el-autocomplete>
         </div>
       </bottom-tool-bar>
       <div class="goods-container"
@@ -152,9 +156,6 @@ export default{
       return (state) => {
         return (state.value.indexOf(queryString) === 0)
       }
-    },
-    handleSelect (item) {
-      console.log(item)
     },
     // 页码选择
     handleCurrentChange (val) {

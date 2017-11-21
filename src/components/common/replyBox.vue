@@ -18,7 +18,7 @@
   disabled
   show-text
   text-color="#ff9900"
-  text-template=" {value}分">
+  score-template=" {value}分">
 </el-rate>
   </div>
 </div>
@@ -126,7 +126,6 @@ export default {
       })
     },
     openReply (id, responder) {
-      console.log(id, responder)
       this.$emit('openReply', id, responder)
     },
     love () {

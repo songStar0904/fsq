@@ -11,9 +11,9 @@
  	<div class="nav-right">
  		<el-input
   placeholder="输入商品名称,订单号"
-  icon="search"
+  suffix-icon="el-icon-search"
   v-model="search"
-  :on-icon-click="handleIconClick">
+  @keyup.enter.native="handleIconClick">
 </el-input>
  	</div>
  </div>
@@ -61,15 +61,15 @@
 </el-form-item>
      <el-form-item label="">
            <el-upload
-  class="upload-demo"
-  action="/api/tm/ifile/upload"
-  :on-preview="handlePreview"
-  :on-remove="handleRemove"
-  :on-success="handleSuccess"
-  :file-list="form.img"
-  :data="params"
-  :before-upload="beforeAvatarUpload"
-  list-type="picture-card">
+            class="upload-demo"
+            action="/api/tm/ifile/upload"
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :on-success="handleSuccess"
+            :file-list="form.img"
+            :data="params"
+            :before-upload="beforeAvatarUpload"
+            list-type="picture-card">
   <el-button size="small" type="primary">点击上传</el-button>
   <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过1MB</div>
 </el-upload>
@@ -87,6 +87,7 @@
 </template>
 <script>
 import {orderItem, bottomToolBar} from '@/components/common'
+import {beforeAvatarUpload} from '@/utils/uploadImg'
 export default{
   data () {
     return {
@@ -159,7 +160,6 @@ export default{
     },
     // 评价
     comment (id, item) {
-      // console.log(id, item)
       this.$fetch.comment.cnew({
         oiid: item.oiid
       })
@@ -199,7 +199,6 @@ export default{
       this.getOrder()
     },
     handleRemove (file, fileList) {
-      console.log(file, fileList)
       this.$fetch.upload.del({
         url: file.url,
         id: this.params.id
@@ -214,6 +213,9 @@ export default{
         this.$message.error('访问失败')
       })
     },
+    beforeAvatarUpload (file) {
+      beforeAvatarUpload(file)
+    },
     handlePreview (file) {
       this.dialogImageUrl = file.url
       this.dialogVisible = true
@@ -226,19 +228,6 @@ export default{
         url: response.info.url // file.url
       }
       this.form.img.push(newImg)
-    },
-    // 设置上传要求
-    beforeAvatarUpload (file) {
-      const isJPG = file.type === 'image/jpeg' || file.type === 'image/png'
-      const isLt1M = file.size / 1024 / 1024 < 1
-
-      if (!isJPG) {
-        this.$message.error('上传头像图片只能是 JPG 格式!')
-      }
-      if (!isLt1M) {
-        this.$message.error('上传头像图片大小不能超过 1MB!')
-      }
-      return isJPG && isLt1M
     }
   },
   components: {

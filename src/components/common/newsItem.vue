@@ -3,7 +3,7 @@
   <el-col :span="6" class="img-box"><a href="" :title="item.title">
   <img :src="item.img"></a></el-col>
   <el-col :span="18" class="main-box">
-  <router-link :to="{ name: 'newsItem', params: { id: item.id }}">
+  <router-link :to="{ name: 'newsItem', query: { id: item.id }}">
   <h2 class="title">{{item.title}}&nbsp;&nbsp;<el-tag class="tag" type="danger" v-if="item.stick">置 顶</el-tag></h2>
   </router-link>
   <div class="content" v-html="filterContent"></div>

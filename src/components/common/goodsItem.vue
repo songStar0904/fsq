@@ -1,7 +1,7 @@
 <template>
 <div class="goods-item">
   
-  <router-link :to="{ name: 'goodsItem', params: { id: goodsItem.id }}">
+  <router-link :to="{ name: 'goodsItem', query: { id: goodsItem.id }}">
   <el-card :body-style="{ padding: '0px' }" >
       <img :src="goodsItem.style[0].img[0].url" class="image">
       <div style="padding: 14px;">

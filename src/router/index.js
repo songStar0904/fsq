@@ -37,7 +37,7 @@ export default new VueRouter({
         name: 'allNews',
         component: resolve => require(['@/components/allNews/allNews'], resolve)
       }, {
-        path: 'newsItem/:id',
+        path: 'newsItem',
         name: 'newsItem',
         component: resolve => require(['@/pages/newsItem/newsItem'], resolve),
         meta: {
@@ -54,7 +54,7 @@ export default new VueRouter({
         name: 'all',
         component: resolve => require(['@/components/allGoods/allGoods'], resolve)
       }, {
-        path: 'goodsItem/:id',
+        path: 'goodsItem',
         name: 'goodsItem',
         component: resolve => require(['@/pages/goodsItem/goodsItem'], resolve),
         meta: {
