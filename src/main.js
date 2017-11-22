@@ -12,6 +12,7 @@ Vue.use(ElementUI)
 import 'font-awesome/scss/font-awesome.scss'
 // 引入commoncss
 import './assets/css/common.css'
+import './assets/css/reset.css'
 // 引入animate.css
 import 'animate.css'
 // 引入api

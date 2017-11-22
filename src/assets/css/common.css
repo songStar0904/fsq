@@ -42,19 +42,12 @@
 }
 .text-gray{
   color: #D3DCE6;
-},
+}
 .text-orange{
   color:#f60;
 }
 .text-light-black{
   color:#324057;
-}
-body{
-  font-family: "Microsoft YaHei";
-}
-img{
-  width: 100%;
-  height: 100%;
 }
 a{
     font-weight: 600;
@@ -70,4 +63,8 @@ a:hover{
 }
 :focus{
   outline: none;
+}
+.box {
+  max-width: 1000px;
+  margin: 50px auto;
 }

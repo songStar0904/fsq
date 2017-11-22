@@ -9,7 +9,7 @@ import servicesBox from './servicesBox/servicesBox'
 import newsBox from './newsBox/newsBox'
 import friendlyLink from './friendlyLink/friendlyLink'
 import footerBox from './footerBox/footerBox'
-import backTop from './backTop/backTop'
+import toolBar from './toolBar/toolBar'
 import leaveMessage from './leaveMessage/leaveMessage'
 import aboutBox from './aboutUs/aboutUs'
 import aboutHome from './about/about'
@@ -37,7 +37,7 @@ export {
   newsBox,
   friendlyLink,
   footerBox,
-  backTop,
+  toolBar,
   leaveMessage,
   aboutBox,
   aboutHome,

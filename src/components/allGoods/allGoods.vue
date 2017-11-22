@@ -133,7 +133,6 @@ export default{
           this.total = res.total
           let value
           res.data.forEach((item, i) => {
-            // console.log(item.name, i)
             value = {value: item.name}
             // 将所有商品名称放入搜索建议里
             this.restaurants.push(value)

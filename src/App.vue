@@ -2,20 +2,14 @@
   <div id="app">   
     <main-nav></main-nav>
     <router-view :style="{minHeight:(screenHeight-303)+'px'}"></router-view>
-    <transition
-    name="custom-classes-transition"
-    enter-active-class="animated bounceInDown"
-    leave-active-class="animated bounceOutUp"
-  >
-    <back-top :top="top" v-show="top>screenHeight/4" v-scroll-to="'#app'"></back-top>
-    </transition>
+    <tool-bar :top="top" :screenHeight="screenHeight"></tool-bar>
     <footer-box></footer-box>
 
   </div>
 </template>
 
 <script>
-import {mainNav, footerBox, backTop} from './components'
+import {mainNav, footerBox, toolBar} from './components'
 export default {
   name: 'app',
   data () {
@@ -36,30 +30,7 @@ export default {
   components: {
     mainNav,
     footerBox,
-    backTop
+    toolBar
   }
 }
 </script>
-<style lang="css" type="text/css" rel="stylesheet/css">
-  html, body{
-    padding: 0;
-    margin:0;
-  }
-  body{
-    position: relative;
-    min-height: 100vh;
-    font-family: "Microsoft Yahei",Arial, Helvetica, sans-serif;
-    color: rgba(72, 106, 92, 1);
-  }
-  .box {
-    max-width: 1000px;
-    margin: 50px auto;
-  }
-   .text-orange{
-    color: #f60;
-   }
-   ol, ul, li {
-    list-style-type: none;
-    list-style: none;
-  }
-</style>

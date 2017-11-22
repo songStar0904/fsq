@@ -1,0 +1,18 @@
+html, body{
+    padding: 0;
+    margin:0;
+  }
+body{
+	position: relative;
+	min-height: 100vh;
+	font-family: "Microsoft Yahei",Arial, Helvetica, sans-serif;
+	color: rgba(72, 106, 92, 1);
+}
+ol, ul, li {
+	list-style-type: none;
+	list-style: none;
+}
+img{
+  width: 100%;
+  height: 100%;
+}
