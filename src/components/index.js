@@ -19,6 +19,7 @@ import goodsSpread from './goodsSpread/goodsSpread'
 import addCart from './cart/addCart'
 import editCart from './cart/editCart'
 import chooseAddress from './cart/chooseAddress'
+import settleAccounts from './cart/settleAccounts'
 import simpleIntroduce from './introduce/simpleIntroduce'
 import honorBox from './introduce/honorBox'
 import cultureBox from './introduce/cultureBox'
@@ -47,6 +48,7 @@ export {
   addCart,
   editCart,
   chooseAddress,
+  settleAccounts,
   simpleIntroduce,
   honorBox,
   cultureBox,

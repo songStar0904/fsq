@@ -19,7 +19,7 @@
 </div>
 </el-col>
 <el-col :span="8">
-<div  class="box-card" @click="addAddress">
+<div class="box-card" @click="addAddress">
 	<div class="add"><i class="el-icon-plus"></i></div>
 	<div class="title">添加新地址</div>
 </div>
@@ -66,7 +66,7 @@ export default{
       limitNum: 3,
       length: 3,
       // 箭头是否朝下
-      down: true,
+      down: false,
       title: '添加地址',
       dialogFormVisible: false,
       // 区域数据
@@ -240,11 +240,11 @@ export default{
       if (this.limitNum === this.address.length) {
         this.limitNum = this.length
         this.btnTitle = '展开'
-        this.down = true
+        this.down = false
       } else {
         this.limitNum = this.address.length
         this.btnTitle = '收起'
-        this.down = false
+        this.down = true
       }
     }
   }

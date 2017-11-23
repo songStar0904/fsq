@@ -31,7 +31,6 @@
     header-align="center">
     <template slot-scope="scope">￥  {{scope.row.data.sub.price}}</template>
     </el-table-column>
-    
     <el-table-column
       prop="num"
       label="数量"

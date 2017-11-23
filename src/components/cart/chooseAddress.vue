@@ -1,5 +1,5 @@
 <template>
-	<div class="address">
+<div class="address">
 	<address-box @chooseAddress="chooseAddress" :init="this.$store.state.cart.tCart.address.id"></address-box>
 <el-input
   type="textarea"

@@ -17,8 +17,6 @@ export default{
 }
 </script>
 <style scoped>
-    .goods{
-    }
 	.goods i{
 	  font-size: 64px;
 	  float: left;

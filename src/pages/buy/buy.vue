@@ -1,5 +1,5 @@
 <template>
-	<div class="buy">
+	<div class="buy box">
   <div v-title>湘潭福盛全官网 - 购买流程</div>
 <el-steps :space="200" :active="active" finish-status="success" align-center>
   <el-step title="加入购物车"></el-step>
@@ -11,6 +11,7 @@
 <add-cart v-show="active===1" :name="$route.params.name"></add-cart>
 <edit-cart v-show="active===2" :tCart="tCart"></edit-cart>
 <choose-address v-show="active===3"></choose-address>
+<settle-accounts v-show="active===4" :active="active"></settle-accounts>
 </div>
 <div class="button-box">
 <el-button  @click="pre" size="large" :disabled="pDisabled">上一步</el-button>
@@ -19,7 +20,7 @@
 	</div>
 </template>
 <script>
-  import {addCart, editCart, chooseAddress} from '@/components'
+  import {addCart, editCart, chooseAddress, settleAccounts} from '@/components'
   export default {
     data () {
       return {
@@ -75,17 +76,6 @@
             this.nDisabled = true
           }
         }
-        if (val === 4) {
-          this.$fetch.order.add(this.tCart)
-            .then((res) => {
-              if (res.status) {
-                this.$store.dispatch('GET_CART')
-                this.$message.success(res.msg)
-              } else {
-                this.$message.error(res.msg)
-              }
-            })
-        }
       }
     },
     mounted () {
@@ -106,16 +96,12 @@
     components: {
       addCart,
       editCart,
-      chooseAddress
+      chooseAddress,
+      settleAccounts
     }
   }
 </script>
 <style scoped>
-  .buy{
-    margin: 50px auto;
-    
-     max-width: 1000px;
-  }
   .el-steps{
     text-align: center;
   }
