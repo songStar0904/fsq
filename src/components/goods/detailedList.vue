@@ -1,17 +1,19 @@
 <template>
   <el-table
-    :data="$style"
+    :data="style"
     stripe
-    style="width: 100%">
+    empty-text="您还未添加任何记录"
+    style="width: 100%"
+    >
     <el-table-column
       prop="name"
-      label="颜色">
+      label="外观">
     </el-table-column>
     <el-table-column
       prop="num"
-      label="件数">
+      label="总数">
       <template slot-scope="scope">
-      	{{scope.row.size | filterNum}} 件
+      	{{scope.row.num}} 件
       </template>
     </el-table-column>
     <el-table-column
@@ -19,7 +21,7 @@
       label="尺码"
       width="250">
       <template slot-scope="scope">
-      	<span style="margin-right:10px" v-for="item in scope.row.size" v-if="item>0">{{item.name}}({{item.num}})</span>
+      	<span style="margin-right:10px" v-for="item in scope.row.size" v-show="item.num>0">{{item.name}}({{item.num}})</span>
       </template>
     </el-table-column>
   </el-table>
@@ -27,7 +29,19 @@
 <script>
 export default{
   props: ['$style'],
-  filters: {
+  computed: {
+    filterStyle () {
+      this.style = []
+      this.$style.forEach((item, index) => {
+        let num = this.filterNum(item.size)
+        if (num > 0) {
+          this.style.push(item)
+          this.style[this.style.length - 1].num = num
+        }
+      })
+    }
+  },
+  methods: {
     filterNum (val) {
       let sum = 0
       val.forEach((item) => {
@@ -38,6 +52,7 @@ export default{
   },
   data () {
     return {
+      style: []
     }
   }
 }

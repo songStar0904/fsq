@@ -16,7 +16,7 @@
     <el-rate
   v-model="comment.rate"
   disabled
-  show-text
+  show-score
   text-color="#ff9900"
   score-template=" {value}分">
 </el-rate>
