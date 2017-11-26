@@ -1,7 +1,6 @@
 <template>
   <el-table
-    :data="style"
-    stripe
+    :data="filterStyle"
     empty-text="您还未添加任何记录"
     style="width: 100%"
     >
@@ -31,14 +30,15 @@ export default{
   props: ['$style'],
   computed: {
     filterStyle () {
-      this.style = []
+      let style = []
       this.$style.forEach((item, index) => {
         let num = this.filterNum(item.size)
         if (num > 0) {
-          this.style.push(item)
-          this.style[this.style.length - 1].num = num
+          style.push(item)
+          style[style.length - 1].num = num
         }
       })
+      return style
     }
   },
   methods: {
@@ -48,11 +48,6 @@ export default{
         sum += item.num
       })
       return sum
-    }
-  },
-  data () {
-    return {
-      style: []
     }
   }
 }

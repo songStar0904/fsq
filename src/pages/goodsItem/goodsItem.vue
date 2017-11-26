@@ -1,16 +1,16 @@
 <template>
 <div class="goods-item" v-if="goods">
 <div v-title>湘潭福盛全官网 - {{goods.name}}</div>
-<h3 class="goods-name">{{goods.name}}</h3>
-<span class="goods-tag" v-if="goods.tag" v-for="item in goods.tag">
+<h3 class="goods-name">{{goods.name}} 
+  <span class="goods-tag" v-if="goods.tag" v-for="item in goods.tag" style="margin-right:10px;">
   <el-tag :type="item.color" v-if="item.val" v-text="item.name"></el-tag>
 </span>
+</h3>
 <el-row :gutter="20">
   <el-col :span="12">
     <goods-img class="head-right" :$style="goods.style" :currentStyle="currentStyle" :el="$refs.wrap" ref="warp"></goods-img>
   </el-col>
-  <el-col :span="12">
-      <div class="head-right">
+  <el-col :span="12" class="head-right">
     <section class="widget">
     <el-row class="sub row">
       <el-col :span="4">批发量：</el-col> 
@@ -77,7 +77,6 @@
     <i class="fa fa-heart"></i><span> {{collectTitle}}</span>
     </span>
     </section>
-  </div>
   </el-col>
 </el-row>
   <el-tabs type="border-card" :class="{fixed: true}">
@@ -270,14 +269,20 @@ export default{
         this.$message('请先登录!')
       }
     },
+    format () {
+      let goods = this.goods
+      return {
+        name: goods.name,
+        style: goods.style,
+        sub: goods.sub[this.currentSub],
+        gid: goods.id,
+        total: this.total,
+        totalPrice: this.totalPrice
+      }
+    },
     addCart (type) {
       if (this.isLogin) {
-        this.cart.name = this.goods.name
-        this.cart.style = this.goods.style
-        this.cart.sub = this.goods.sub[this.currentSub]
-        this.cart.gid = this.goods.id
-        this.cart.total = this.total
-        this.cart.totalPrice = this.totalPrice
+        this.cart = this.format()
         this.$store.commit('SET_PCART', this.cart)
         this.$store.dispatch('CHANGE_CART')
           .then((res) => {
