@@ -14,7 +14,6 @@ import leaveMessage from './leaveMessage/leaveMessage'
 import aboutBox from './aboutUs/aboutUs'
 import aboutHome from './about/about'
 import mapBox from './mapBox/mapBox'
-import goodsNav from './goodsNav/goodsNav'
 import goodsSpread from './goodsSpread/goodsSpread'
 import addCart from './cart/addCart'
 import editCart from './cart/editCart'
@@ -43,7 +42,6 @@ export {
   aboutBox,
   aboutHome,
   mapBox,
-  goodsNav,
   goodsSpread,
   addCart,
   editCart,

@@ -95,9 +95,9 @@ export default {
       this.loading = true
       let data
       if (this.type === 'goods') {
-        data = {gid: this.$route.params.id, page: this.currentPage, length: this.length}
+        data = {gid: this.$route.query.id, page: this.currentPage, length: this.length}
       } else {
-        data = {nid: this.$route.params.id, page: this.currentPage, length: this.length}
+        data = {nid: this.$route.query.id, page: this.currentPage, length: this.length}
       }
       console.log(data)
       this.$fetch.comment.get(data).then((res) => {

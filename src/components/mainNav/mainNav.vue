@@ -1,6 +1,6 @@
 <template>
 <div class="main-nav">
-<el-menu :default-active="$route.path" router class="el-menu-demo" mode="horizontal" @select="handleSelect">
+<el-menu :default-active="$route.path" router class="el-menu-demo" mode="horizontal">
 <li class="menu-item logo"><img src="../../assets/logo.png"></li>
   <el-menu-item index="/home">首页</el-menu-item>
   <el-submenu index="/introduce">
@@ -158,15 +158,8 @@ export default {
     this.$store.dispatch('GET_CART')
     // 判断是否登陆
     this.$store.dispatch('IS_LOGIN')
-      .then((res) => {
-        if (res) {
-        }
-      })
   },
   methods: {
-    handleSelect (key, keyPath) {
-      // console.log(key, keyPath)
-    },
     openLogin () {
       this.loginDialog = true
       this.current = 2
