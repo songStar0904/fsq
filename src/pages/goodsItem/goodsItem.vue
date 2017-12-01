@@ -206,10 +206,10 @@ export default{
           this.goods = res.data[0]
           this.collected = this.goods.collect
           this.love = this.goods.love
-          this.getStyle(this.goods.style)
           this.sub = this.goods.sub.sort((a, b) => {
             return a.name - b.name
           })
+          this.getStyle(this.goods.style)
           this.currentPrice = this.goods.sub[0].price
         } else {
           this.$message.error(res.msg)
@@ -218,13 +218,14 @@ export default{
     },
     // 获得size
     getStyle (data) {
-      console.log(this.style)
+      console.log(data)
       data.forEach((item, index) => {
         let size = item.size
+        this.style[index] = []
         this.style[index].name = item.name
         this.style[index].size = []
         for (var key in size) {
-          console.log(key, size[key], this.style)
+          // console.log(key, size[key], index)
           this.style[index].size.push({
             name: key,
             stock: size[key],
