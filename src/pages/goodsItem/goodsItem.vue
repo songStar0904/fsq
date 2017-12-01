@@ -48,10 +48,11 @@
           <div v-for="(size, index) in style" class="size-box">
             <transition-group name="el-zoom-in-center">
            <div v-for="item in size.size" v-show="currentStyle === index" :key="index" class="size-item">
-               <el-col :span="5">{{item.name}}</el-col>
-               <el-col :span="8">{{currentPrice | filterMoney}}元</el-col>
-               <el-col :span="11">
-                <el-input-number v-model="item.num" :min="0" size="small"></el-input-number>
+               <el-col :span="2"><strong>{{item.name}}</strong></el-col>
+               <el-col :span="5">{{currentPrice | filterMoney}}元</el-col>
+               <el-col :span="6">{{item.stock - item.num}}件可售</el-col>
+               <el-col :span="9">
+                <el-input-number v-model="item.num" :min="0" :max="item.stock" size="small"></el-input-number>
                </el-col>
            </div>
          </transition-group>
@@ -203,15 +204,32 @@ export default{
       }).then((res) => {
         if (res.status) {
           this.goods = res.data[0]
-          this.collected = res.data[0].collect
-          this.love = res.data[0].love
-          this.sub = res.data[0].sub.sort((a, b) => {
+          this.collected = this.goods.collect
+          this.love = this.goods.love
+          this.getStyle(this.goods.style)
+          this.sub = this.goods.sub.sort((a, b) => {
             return a.name - b.name
           })
-          this.currentPrice = res.data[0].sub[0].price
-          // this.getSizeNum(res.data[0].style)
+          this.currentPrice = this.goods.sub[0].price
         } else {
           this.$message.error(res.msg)
+        }
+      })
+    },
+    // 获得size
+    getStyle (data) {
+      console.log(this.style)
+      data.forEach((item, index) => {
+        let size = item.size
+        this.style[index].name = item.name
+        this.style[index].size = []
+        for (var key in size) {
+          console.log(key, size[key], this.style)
+          this.style[index].size.push({
+            name: key,
+            stock: size[key],
+            num: 0
+          })
         }
       })
     },
@@ -220,22 +238,6 @@ export default{
       this.current = 0
       this.currentStyle = i
       this.toMove = 0
-    },
-    // 选择规格
-    changeSub (i) {
-      this.currentSub = i
-    },
-    // 给不同的style 添加 size num
-    getSizeNum (style) {
-      this.style = style.map((item) => {
-        item['size'] = [{
-          name: 'XL',
-          num: 0
-        }, {
-          name: 'XL',
-          num: 0
-        }]
-      })
     },
     // 获得当前单价
     getCurrentPrice () {
@@ -375,6 +377,8 @@ export default{
     height: 30px;
     line-height: 30px;
     margin-bottom: 10px;
+    text-align: right;
+    font-size: 14px;
   }
   .goods-item .head-right .summary{
     position: relative;
